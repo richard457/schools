@@ -39538,6 +39538,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('main-component', __webpac
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('nav-component', __webpack_require__(501));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('left-side-component', __webpack_require__(504));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('tree-component', __webpack_require__(507));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login-component', __webpack_require__(519));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -72973,7 +72974,6 @@ var _this = this;
                 longitude: -0.1838486
             }],
             map: null,
-
             bounds: null,
             marker: null,
             markers: [],
@@ -72982,6 +72982,39 @@ var _this = this;
     },
     methods: {
         itemClick: function itemClick(node) {},
+        Play_back: function Play_back() {
+            console.log('oke');
+        },
+        CenterControl: function CenterControl(controlDiv, map) {
+
+            // Set CSS for the control border.
+            var controlUI = document.createElement('div');
+            controlUI.style.backgroundColor = '#fff';
+            controlUI.style.border = '2px solid #fff';
+            controlUI.style.borderRadius = '3px';
+            controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+            controlUI.style.cursor = 'pointer';
+            controlUI.style.marginBottom = '22px';
+            controlUI.style.textAlign = 'center';
+            controlUI.title = 'Click to recenter the map';
+            controlDiv.appendChild(controlUI);
+
+            // Set CSS for the control interior.
+            var controlText = document.createElement('div');
+            controlText.style.color = 'rgb(25,25,25)';
+            controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+            controlText.style.fontSize = '16px';
+            controlText.style.lineHeight = '38px';
+            controlText.style.paddingLeft = '5px';
+            controlText.style.paddingRight = '5px';
+            controlText.innerHTML = '<button type=\'button\' class="btn btn-info" @click="Play_back">Play back</button>';
+            controlUI.appendChild(controlText);
+
+            // Setup the click event listeners: simply set the map to Chicago.
+            controlUI.addEventListener('click', function () {
+                map.setCenter(chicago);
+            });
+        },
         calcRoute: function calcRoute() {
             var _this2 = this;
 
@@ -73017,6 +73050,11 @@ var _this = this;
     mounted: function mounted() {
         var _this3 = this;
 
+        var centerControlDiv = document.createElement('div');
+        var centerControl = new this.CenterControl(centerControlDiv, this.map);
+
+        centerControlDiv.index = 1;
+
         this.bounds = new google.maps.LatLngBounds();
         var element = document.getElementById(this.mapName);
         var mapCentre = this.markerCoordinates[0];
@@ -73032,24 +73070,20 @@ var _this = this;
             map: this.map,
             title: 'I\m sliding marker'
         });
+        this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 
-        __WEBPACK_IMPORTED_MODULE_0_rxjs_Rx___default.a.Observable.from(this.coords_n).zip(__WEBPACK_IMPORTED_MODULE_0_rxjs_Rx___default.a.Observable.interval(1000), function (a, b) {
+        __WEBPACK_IMPORTED_MODULE_0_rxjs_Rx___default.a.Observable.from(this.coords_n).zip(__WEBPACK_IMPORTED_MODULE_0_rxjs_Rx___default.a.Observable.interval(1000), function (a) {
             return a;
         }).subscribe(function (x) {
-
             position = new google.maps.LatLng(x.latitude, x.longitude);
-
             _this3.marker.setPosition(position);
-
             var duration = 1000;
             if (duration < 0) {
                 duration = 1;
                 $('#durationOption').val(duration);
             }
-
             _this3.marker.setDuration(duration);
             _this3.marker.setEasing('easeInQuint');
-
             _this3.map.fitBounds(_this3.bounds.extend(position));
         }, null, function () {
             console.log('completed');
@@ -73365,135 +73399,23 @@ var _this = this;
                     }]
                 }, {
                     "id": 2,
-                    "text": "custom icon",
-                    "value": "custom icon",
-                    "icon": "fa fa-warning icon-state-danger",
-                    "opened": false,
-                    "selected": false,
-                    "disabled": false,
-                    "loading": false,
-                    "children": []
-                }, {
-                    "id": 3,
-                    "text": "initially open",
-                    "value": "initially open",
-                    "icon": "fa fa-folder icon-state-default",
-                    "opened": true,
-                    "selected": false,
-                    "disabled": false,
-                    "loading": false,
-                    "children": [{
-                        "id": 4,
-                        "text": "Another node",
-                        "value": "Another node",
-                        "icon": "",
-                        "opened": false,
-                        "selected": false,
-                        "disabled": false,
-                        "loading": false,
-                        "children": []
-                    }]
-                }, {
-                    "id": 5,
-                    "text": "custom icon",
-                    "value": "custom icon",
-                    "icon": "fa fa-warning icon-state-warning",
-                    "opened": false,
-                    "selected": false,
-                    "disabled": false,
-                    "loading": false,
-                    "children": []
-                }, {
-                    "id": 6,
-                    "text": "disabled node",
-                    "value": "disabled node",
-                    "icon": "fa fa-check icon-state-success",
-                    "opened": false,
-                    "selected": false,
-                    "disabled": true,
-                    "loading": false,
-                    "children": []
-                }]
-            }, {
-                "id": 7,
-                "text": "Same but with checkboxes",
-                "value": "Same but with checkboxes",
-                "icon": "",
-                "opened": true,
-                "selected": false,
-                "disabled": false,
-                "loading": false,
-                "children": [{
-                    "id": 8,
-                    "text": "initially selected",
-                    "value": "initially selected",
+                    "text": "Volcon",
+                    "value": "Volcon",
                     "icon": "",
                     "opened": false,
-                    "selected": true,
-                    "disabled": false,
-                    "loading": false,
-                    "children": []
-                }, {
-                    "id": 9,
-                    "text": "custom icon",
-                    "value": "custom icon",
-                    "icon": "fa fa-warning icon-state-danger",
-                    "opened": false,
-                    "selected": false,
-                    "disabled": false,
-                    "loading": false,
-                    "children": []
-                }, {
-                    "id": 10,
-                    "text": "initially open",
-                    "value": "initially open",
-                    "icon": "fa fa-folder icon-state-default",
-                    "opened": true,
                     "selected": false,
                     "disabled": false,
                     "loading": false,
                     "children": [{
-                        "id": 11,
-                        "text": "Another node",
-                        "value": "Another node",
+                        "text": "RRA-450B",
+                        "value": "RRA-450B",
                         "icon": "",
                         "opened": false,
-                        "selected": false,
+                        "selected": true,
                         "disabled": false,
-                        "loading": false,
-                        "children": []
+                        "loading": false
                     }]
-                }, {
-                    "id": 12,
-                    "text": "custom icon",
-                    "value": "custom icon",
-                    "icon": "fa fa-warning icon-state-warning",
-                    "opened": false,
-                    "selected": false,
-                    "disabled": false,
-                    "loading": false,
-                    "children": []
-                }, {
-                    "id": 13,
-                    "text": "disabled node",
-                    "value": "disabled node",
-                    "icon": "fa fa-check icon-state-success",
-                    "opened": false,
-                    "selected": false,
-                    "disabled": true,
-                    "loading": false,
-                    "children": []
                 }]
-            }, {
-                "id": 14,
-                "text": "And wholerow selection",
-                "value": "And wholerow selection",
-                "icon": "",
-                "opened": false,
-                "selected": false,
-                "disabled": false,
-                "loading": false,
-                "children": []
             }]
         };
     },
@@ -74392,6 +74314,150 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(27)
+/* script */
+var __vue_script__ = __webpack_require__(520)
+/* template */
+var __vue_template__ = __webpack_require__(521)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\loginComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-00591eaa", Component.options)
+  } else {
+    hotAPI.reload("data-v-00591eaa", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 520 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'left-side',
+
+    props: ['name'],
+    data: function data() {},
+    methods: {},
+    mounted: function mounted() {
+        console.log('mounted nav header component');
+    }
+
+});
+
+/***/ }),
+/* 521 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        {
+          staticClass: "col-xs-4 col-md-4 col-lg-4",
+          staticStyle: {
+            "margin-top": "220px",
+            "max-width": "400px",
+            "margin-left": "350px"
+          }
+        },
+        [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { placeholder: "user name" }
+          }),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { placeholder: "password" }
+          }),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn",
+              staticStyle: {
+                "border-radius": "0px",
+                width: "100px",
+                "margin-left": "120px"
+              }
+            },
+            [_vm._v("Login")]
+          )
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-00591eaa", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

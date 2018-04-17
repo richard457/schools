@@ -29,6 +29,7 @@ Vue.component('main-component', require('./components/MainComponent.vue'));
 Vue.component('nav-component', require('./components/navComponent.vue'));
 Vue.component('left-side-component', require('./components/leftSideComponent.vue'));
 Vue.component('tree-component', require('./components/TreeComponent.vue'));
+Vue.component('login-component', require('./components/loginComponent.vue'));
 
 
 

@@ -34,7 +34,6 @@
                     longitude: -0.1838486
                 }],
                 map: null,
-
                 bounds: null,
                 marker: null,
                 markers: [],
@@ -55,12 +54,44 @@
                     {latitude: 51.505650913920384, longitude: -0.18851960778727062}
                 ]
             }
-
         },
         methods: {
 
             itemClick(node) {
 
+            },
+            Play_back() {
+                console.log('oke');
+            },
+            CenterControl(controlDiv, map) {
+
+                // Set CSS for the control border.
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#fff';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '22px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Click to recenter the map';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior.
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(25,25,25)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = `<button type='button' class="btn btn-info" @click="Play_back">Play back</button>`;
+                controlUI.appendChild(controlText);
+
+                // Setup the click event listeners: simply set the map to Chicago.
+                controlUI.addEventListener('click', function() {
+                    map.setCenter(chicago);
+                });
             },
             calcRoute() {
                 let directionsDisplay = new google.maps.DirectionsRenderer();
@@ -95,6 +126,11 @@
         },
         mounted: function () {
 
+            var centerControlDiv = document.createElement('div');
+            var centerControl = new this.CenterControl(centerControlDiv, this.map);
+
+            centerControlDiv.index = 1;
+
 
             this.bounds = new google.maps.LatLngBounds();
             const element = document.getElementById(this.mapName);
@@ -111,33 +147,23 @@
                 map: this.map,
                 title: 'I\m sliding marker'
             });
-
+            this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 
             Rx.Observable.from(this.coords_n).zip(
-                Rx.Observable.interval(1000), (a, b) => {
+                Rx.Observable.interval(1000), (a) => {
                     return a;
                 })
-
                 .subscribe(
                     (x) => {
-
                         position = new google.maps.LatLng(x.latitude, x.longitude);
-
                         this.marker.setPosition(position);
-
                         var duration = 1000;
                         if (duration < 0) {
                             duration = 1;
                             $('#durationOption').val(duration);
                         }
-
-
-
-
                         this.marker.setDuration(duration);
                         this.marker.setEasing('easeInQuint');
-
-
                         this.map.fitBounds(this.bounds.extend(position))
                     },
                     null,
