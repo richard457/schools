@@ -13,12 +13,12 @@ class Datas extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('data', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('longitude');
-            $table->string('latitude');
-//            TODO: add foreign key from vehicles table
-            $table->integer('vehicle_id');
+            $table->double('longitude');
+            $table->unsignedInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class Datas extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('data');
     }
 }
