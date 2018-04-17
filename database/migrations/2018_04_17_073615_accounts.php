@@ -15,7 +15,14 @@ class Accounts extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->nestedSet();
+            $table->string('value');
+            $table->string('text');
+            $table->boolean('opened')->default(false);
+            $table->boolean('selected')->default(false);
+            $table->boolean('disabled')->default(false);
+            $table->boolean('loading')->default(false);
+            $table->string('icon')->default("");
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->rememberToken();
@@ -30,6 +37,9 @@ class Accounts extends Migration
      */
     public function down()
     {
+        Schema::table('accounts', function (Blueprint $table) {
+            $table->dropNestedSet();
+        });
         Schema::dropIfExists('accounts');
     }
 }

@@ -13,6 +13,7 @@ class Account extends Seeder
     {
         DB::table('accounts')->insert([
 
+
             ['name' => 'Kigali', 'user_id' => 1]
         ]);
     }

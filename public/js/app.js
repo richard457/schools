@@ -698,7 +698,7 @@ var isArrayLike_1 = __webpack_require__(75);
 var isPromise_1 = __webpack_require__(76);
 var isObject_1 = __webpack_require__(71);
 var Observable_1 = __webpack_require__(0);
-var iterator_1 = __webpack_require__(17);
+var iterator_1 = __webpack_require__(18);
 var InnerSubscriber_1 = __webpack_require__(210);
 var observable_1 = __webpack_require__(30);
 function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
@@ -778,8 +778,8 @@ exports.subscribeToResult = subscribeToResult;
 
 "use strict";
 
-var AsyncAction_1 = __webpack_require__(22);
-var AsyncScheduler_1 = __webpack_require__(23);
+var AsyncAction_1 = __webpack_require__(23);
+var AsyncScheduler_1 = __webpack_require__(24);
 /**
  *
  * Async Scheduler
@@ -1899,6 +1899,115 @@ module.exports = g;
 
 /***/ }),
 /* 17 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1942,7 +2051,7 @@ exports.$$iterator = exports.iterator;
 //# sourceMappingURL=iterator.js.map
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2059,7 +2168,7 @@ exports.concat = concat;
 //# sourceMappingURL=concat.js.map
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2192,7 +2301,7 @@ exports.Notification = Notification;
 //# sourceMappingURL=Notification.js.map
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2371,7 +2480,7 @@ exports.MergeMapSubscriber = MergeMapSubscriber;
 //# sourceMappingURL=mergeMap.js.map
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2389,7 +2498,7 @@ exports.isNumeric = isNumeric;
 //# sourceMappingURL=isNumeric.js.map
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2537,7 +2646,7 @@ exports.AsyncAction = AsyncAction;
 //# sourceMappingURL=AsyncAction.js.map
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2594,7 +2703,7 @@ exports.AsyncScheduler = AsyncScheduler;
 //# sourceMappingURL=AsyncScheduler.js.map
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2689,7 +2798,7 @@ var MapSubscriber = (function (_super) {
 //# sourceMappingURL=map.js.map
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2723,7 +2832,7 @@ exports.ArgumentOutOfRangeError = ArgumentOutOfRangeError;
 //# sourceMappingURL=ArgumentOutOfRangeError.js.map
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2796,115 +2905,6 @@ function reduce(accumulator, seed) {
 }
 exports.reduce = reduce;
 //# sourceMappingURL=reduce.js.map
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
 
 /***/ }),
 /* 28 */
@@ -3227,7 +3227,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var Notification_1 = __webpack_require__(19);
+var Notification_1 = __webpack_require__(20);
 /**
  *
  * Re-emits all notifications from source Observable with specified scheduler.
@@ -3342,7 +3342,7 @@ exports.ObserveOnMessage = ObserveOnMessage;
 
 "use strict";
 
-var mergeMap_1 = __webpack_require__(20);
+var mergeMap_1 = __webpack_require__(21);
 var identity_1 = __webpack_require__(81);
 /**
  * Converts a higher-order Observable into a first-order Observable which
@@ -3519,7 +3519,7 @@ var isArray_1 = __webpack_require__(12);
 var Subscriber_1 = __webpack_require__(1);
 var OuterSubscriber_1 = __webpack_require__(2);
 var subscribeToResult_1 = __webpack_require__(3);
-var iterator_1 = __webpack_require__(17);
+var iterator_1 = __webpack_require__(18);
 /* tslint:enable:max-line-length */
 /**
  * @param observables
@@ -4662,7 +4662,7 @@ var OnErrorResumeNextSubscriber = (function (_super) {
 
 "use strict";
 
-var mergeMap_1 = __webpack_require__(20);
+var mergeMap_1 = __webpack_require__(21);
 /* tslint:enable:max-line-length */
 /**
  * Projects each source value to an Observable which is merged in the output
@@ -5395,7 +5395,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var ArgumentOutOfRangeError_1 = __webpack_require__(25);
+var ArgumentOutOfRangeError_1 = __webpack_require__(26);
 var EmptyObservable_1 = __webpack_require__(14);
 /**
  * Emits only the last `count` values emitted by the source Observable.
@@ -5744,7 +5744,7 @@ var SwitchMapSubscriber = (function (_super) {
 "use strict";
 
 var async_1 = __webpack_require__(4);
-var map_1 = __webpack_require__(24);
+var map_1 = __webpack_require__(25);
 /**
  * @param scheduler
  * @return {Observable<Timestamp<any>>|WebSocketSubject<T>|Observable<T>}
@@ -30134,11 +30134,11 @@ var BehaviorSubject_1 = __webpack_require__(129);
 exports.BehaviorSubject = BehaviorSubject_1.BehaviorSubject;
 var ConnectableObservable_1 = __webpack_require__(123);
 exports.ConnectableObservable = ConnectableObservable_1.ConnectableObservable;
-var Notification_1 = __webpack_require__(19);
+var Notification_1 = __webpack_require__(20);
 exports.Notification = Notification_1.Notification;
 var EmptyError_1 = __webpack_require__(40);
 exports.EmptyError = EmptyError_1.EmptyError;
-var ArgumentOutOfRangeError_1 = __webpack_require__(25);
+var ArgumentOutOfRangeError_1 = __webpack_require__(26);
 exports.ArgumentOutOfRangeError = ArgumentOutOfRangeError_1.ArgumentOutOfRangeError;
 var ObjectUnsubscribedError_1 = __webpack_require__(31);
 exports.ObjectUnsubscribedError = ObjectUnsubscribedError_1.ObjectUnsubscribedError;
@@ -30165,7 +30165,7 @@ var async_1 = __webpack_require__(4);
 var queue_1 = __webpack_require__(84);
 var animationFrame_1 = __webpack_require__(489);
 var rxSubscriber_1 = __webpack_require__(29);
-var iterator_1 = __webpack_require__(17);
+var iterator_1 = __webpack_require__(18);
 var observable_1 = __webpack_require__(30);
 var _operators = __webpack_require__(493);
 exports.operators = _operators;
@@ -30373,7 +30373,7 @@ var PromiseObservable_1 = __webpack_require__(80);
 var IteratorObservable_1 = __webpack_require__(212);
 var ArrayObservable_1 = __webpack_require__(13);
 var ArrayLikeObservable_1 = __webpack_require__(213);
-var iterator_1 = __webpack_require__(17);
+var iterator_1 = __webpack_require__(18);
 var Observable_1 = __webpack_require__(0);
 var observeOn_1 = __webpack_require__(34);
 var observable_1 = __webpack_require__(30);
@@ -30648,7 +30648,7 @@ var tryCatch_1 = __webpack_require__(8);
 var errorObject_1 = __webpack_require__(7);
 var Observable_1 = __webpack_require__(0);
 var Subscriber_1 = __webpack_require__(1);
-var map_1 = __webpack_require__(24);
+var map_1 = __webpack_require__(25);
 function getCORSRequest() {
     if (root_1.root.XMLHttpRequest) {
         return new root_1.root.XMLHttpRequest();
@@ -32006,8 +32006,8 @@ exports.combineAll = combineAll;
 
 "use strict";
 
-var concat_1 = __webpack_require__(18);
-var concat_2 = __webpack_require__(18);
+var concat_1 = __webpack_require__(19);
+var concat_2 = __webpack_require__(19);
 exports.concatStatic = concat_2.concat;
 /* tslint:enable:max-line-length */
 /**
@@ -32608,7 +32608,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var async_1 = __webpack_require__(4);
 var isDate_1 = __webpack_require__(37);
 var Subscriber_1 = __webpack_require__(1);
-var Notification_1 = __webpack_require__(19);
+var Notification_1 = __webpack_require__(20);
 /**
  * Delays the emission of items from the source Observable by a given timeout or
  * until a given Date.
@@ -33659,7 +33659,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var ArgumentOutOfRangeError_1 = __webpack_require__(25);
+var ArgumentOutOfRangeError_1 = __webpack_require__(26);
 /**
  * Emits the single value at the specified `index` in a sequence of emissions
  * from the source Observable.
@@ -34736,7 +34736,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var Notification_1 = __webpack_require__(19);
+var Notification_1 = __webpack_require__(20);
 /**
  * Represents all of the notifications from the source Observable as `next`
  * emissions marked with their original types within {@link Notification}
@@ -34828,7 +34828,7 @@ var MaterializeSubscriber = (function (_super) {
 
 "use strict";
 
-var reduce_1 = __webpack_require__(26);
+var reduce_1 = __webpack_require__(27);
 /**
  * The Max operator operates on an Observable that emits numbers (or items that can be compared with a provided function),
  * and when source Observable completes it emits a single item: the item with the largest value.
@@ -35237,7 +35237,7 @@ exports.MergeScanSubscriber = MergeScanSubscriber;
 
 "use strict";
 
-var reduce_1 = __webpack_require__(26);
+var reduce_1 = __webpack_require__(27);
 /**
  * The Min operator operates on an Observable that emits numbers (or items that can be compared with a provided function),
  * and when source Observable completes it emits a single item: the item with the smallest value.
@@ -35601,7 +35601,7 @@ exports.partition = partition;
 
 "use strict";
 
-var map_1 = __webpack_require__(24);
+var map_1 = __webpack_require__(25);
 /**
  * Maps each source value (an object) to its specified nested property.
  *
@@ -36812,7 +36812,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var ArgumentOutOfRangeError_1 = __webpack_require__(25);
+var ArgumentOutOfRangeError_1 = __webpack_require__(26);
 /**
  * Skip the last `count` values emitted by the source Observable.
  *
@@ -37057,7 +37057,7 @@ var SkipWhileSubscriber = (function (_super) {
 var ArrayObservable_1 = __webpack_require__(13);
 var ScalarObservable_1 = __webpack_require__(46);
 var EmptyObservable_1 = __webpack_require__(14);
-var concat_1 = __webpack_require__(18);
+var concat_1 = __webpack_require__(19);
 var isScheduler_1 = __webpack_require__(11);
 /* tslint:enable:max-line-length */
 /**
@@ -37304,7 +37304,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var ArgumentOutOfRangeError_1 = __webpack_require__(25);
+var ArgumentOutOfRangeError_1 = __webpack_require__(26);
 var EmptyObservable_1 = __webpack_require__(14);
 /**
  * Emits only the first `count` values emitted by the source Observable.
@@ -38089,7 +38089,7 @@ var TimeoutWithSubscriber = (function (_super) {
 
 "use strict";
 
-var reduce_1 = __webpack_require__(26);
+var reduce_1 = __webpack_require__(27);
 function toArrayReducer(arr, item, index) {
     if (index === 0) {
         return [item];
@@ -38374,7 +38374,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Subject_1 = __webpack_require__(6);
 var async_1 = __webpack_require__(4);
 var Subscriber_1 = __webpack_require__(1);
-var isNumeric_1 = __webpack_require__(21);
+var isNumeric_1 = __webpack_require__(22);
 var isScheduler_1 = __webpack_require__(11);
 function windowTime(windowTimeSpan) {
     var scheduler = async_1.async;
@@ -39073,8 +39073,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncAction_1 = __webpack_require__(22);
-var AsyncScheduler_1 = __webpack_require__(23);
+var AsyncAction_1 = __webpack_require__(23);
+var AsyncScheduler_1 = __webpack_require__(24);
 var VirtualTimeScheduler = (function (_super) {
     __extends(VirtualTimeScheduler, _super);
     function VirtualTimeScheduler(SchedulerAction, maxFrames) {
@@ -39496,7 +39496,7 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(175);
-module.exports = __webpack_require__(515);
+module.exports = __webpack_require__(518);
 
 
 /***/ }),
@@ -39538,7 +39538,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('main-component', __webpac
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('nav-component', __webpack_require__(501));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('left-side-component', __webpack_require__(504));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('tree-component', __webpack_require__(507));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login-component', __webpack_require__(519));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login-component', __webpack_require__(515));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -62527,7 +62527,7 @@ exports.InnerSubscriber = InnerSubscriber;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var concat_1 = __webpack_require__(18);
+var concat_1 = __webpack_require__(19);
 Observable_1.Observable.concat = concat_1.concat;
 //# sourceMappingURL=concat.js.map
 
@@ -62544,7 +62544,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var root_1 = __webpack_require__(9);
 var Observable_1 = __webpack_require__(0);
-var iterator_1 = __webpack_require__(17);
+var iterator_1 = __webpack_require__(18);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -63849,7 +63849,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(21);
+var isNumeric_1 = __webpack_require__(22);
 var Observable_1 = __webpack_require__(0);
 var async_1 = __webpack_require__(4);
 /**
@@ -64632,7 +64632,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(21);
+var isNumeric_1 = __webpack_require__(22);
 var Observable_1 = __webpack_require__(0);
 var async_1 = __webpack_require__(4);
 var isScheduler_1 = __webpack_require__(11);
@@ -65064,7 +65064,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncAction_1 = __webpack_require__(22);
+var AsyncAction_1 = __webpack_require__(23);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -65119,7 +65119,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncScheduler_1 = __webpack_require__(23);
+var AsyncScheduler_1 = __webpack_require__(24);
 var QueueScheduler = (function (_super) {
     __extends(QueueScheduler, _super);
     function QueueScheduler() {
@@ -65725,7 +65725,7 @@ Observable_1.Observable.prototype.concat = concat_1.concat;
 "use strict";
 
 var concat_1 = __webpack_require__(92);
-var concat_2 = __webpack_require__(18);
+var concat_2 = __webpack_require__(19);
 exports.concatStatic = concat_2.concat;
 /* tslint:enable:max-line-length */
 /**
@@ -67887,7 +67887,7 @@ Observable_1.Observable.prototype.map = map_1.map;
 
 "use strict";
 
-var map_1 = __webpack_require__(24);
+var map_1 = __webpack_require__(25);
 /**
  * Applies a given `project` function to each value emitted by the source
  * Observable, and emits the resulting values as an Observable.
@@ -68264,7 +68264,7 @@ Observable_1.Observable.prototype.flatMap = mergeMap_1.mergeMap;
 
 "use strict";
 
-var mergeMap_1 = __webpack_require__(20);
+var mergeMap_1 = __webpack_require__(21);
 /* tslint:enable:max-line-length */
 /**
  * Projects each source value to an Observable which is merged in the output
@@ -69176,7 +69176,7 @@ Observable_1.Observable.prototype.reduce = reduce_1.reduce;
 
 "use strict";
 
-var reduce_1 = __webpack_require__(26);
+var reduce_1 = __webpack_require__(27);
 /* tslint:enable:max-line-length */
 /**
  * Applies an accumulator function over the source Observable, and returns the
@@ -70053,7 +70053,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Observable_1 = __webpack_require__(0);
 var asap_1 = __webpack_require__(148);
-var isNumeric_1 = __webpack_require__(21);
+var isNumeric_1 = __webpack_require__(22);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -70109,7 +70109,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Immediate_1 = __webpack_require__(440);
-var AsyncAction_1 = __webpack_require__(22);
+var AsyncAction_1 = __webpack_require__(23);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -70385,7 +70385,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncScheduler_1 = __webpack_require__(23);
+var AsyncScheduler_1 = __webpack_require__(24);
 var AsapScheduler = (function (_super) {
     __extends(AsapScheduler, _super);
     function AsapScheduler() {
@@ -71403,7 +71403,7 @@ Observable_1.Observable.prototype.windowTime = windowTime_1.windowTime;
 "use strict";
 
 var async_1 = __webpack_require__(4);
-var isNumeric_1 = __webpack_require__(21);
+var isNumeric_1 = __webpack_require__(22);
 var isScheduler_1 = __webpack_require__(11);
 var windowTime_1 = __webpack_require__(163);
 function windowTime(windowTimeSpan) {
@@ -71701,7 +71701,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(0);
-var Notification_1 = __webpack_require__(19);
+var Notification_1 = __webpack_require__(20);
 var ColdObservable_1 = __webpack_require__(487);
 var HotObservable_1 = __webpack_require__(488);
 var SubscriptionLog_1 = __webpack_require__(169);
@@ -72076,7 +72076,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncAction_1 = __webpack_require__(22);
+var AsyncAction_1 = __webpack_require__(23);
 var AnimationFrame_1 = __webpack_require__(491);
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -72177,7 +72177,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncScheduler_1 = __webpack_require__(23);
+var AsyncScheduler_1 = __webpack_require__(24);
 var AnimationFrameScheduler = (function (_super) {
     __extends(AnimationFrameScheduler, _super);
     function AnimationFrameScheduler() {
@@ -72291,7 +72291,7 @@ var isEmpty_1 = __webpack_require__(112);
 exports.isEmpty = isEmpty_1.isEmpty;
 var last_1 = __webpack_require__(114);
 exports.last = last_1.last;
-var map_1 = __webpack_require__(24);
+var map_1 = __webpack_require__(25);
 exports.map = map_1.map;
 var mapTo_1 = __webpack_require__(116);
 exports.mapTo = mapTo_1.mapTo;
@@ -72303,9 +72303,9 @@ var merge_1 = __webpack_require__(119);
 exports.merge = merge_1.merge;
 var mergeAll_1 = __webpack_require__(35);
 exports.mergeAll = mergeAll_1.mergeAll;
-var mergeMap_1 = __webpack_require__(20);
+var mergeMap_1 = __webpack_require__(21);
 exports.mergeMap = mergeMap_1.mergeMap;
-var mergeMap_2 = __webpack_require__(20);
+var mergeMap_2 = __webpack_require__(21);
 exports.flatMap = mergeMap_2.mergeMap;
 var mergeMapTo_1 = __webpack_require__(120);
 exports.mergeMapTo = mergeMapTo_1.mergeMapTo;
@@ -72335,7 +72335,7 @@ var publishReplay_1 = __webpack_require__(130);
 exports.publishReplay = publishReplay_1.publishReplay;
 var race_1 = __webpack_require__(132);
 exports.race = race_1.race;
-var reduce_1 = __webpack_require__(26);
+var reduce_1 = __webpack_require__(27);
 exports.reduce = reduce_1.reduce;
 var repeat_1 = __webpack_require__(133);
 exports.repeat = repeat_1.repeat;
@@ -72813,7 +72813,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(496)
 }
-var normalizeComponent = __webpack_require__(27)
+var normalizeComponent = __webpack_require__(17)
 /* script */
 var __vue_script__ = __webpack_require__(499)
 /* template */
@@ -72981,7 +72981,7 @@ var _this = this;
         };
     },
     methods: {
-        itemClick: function itemClick(node) {},
+        addAccount: function addAccount(node) {},
         Play_back: function Play_back() {
             console.log('oke');
         },
@@ -73120,7 +73120,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(27)
+var normalizeComponent = __webpack_require__(17)
 /* script */
 var __vue_script__ = __webpack_require__(502)
 /* template */
@@ -73303,7 +73303,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(27)
+var normalizeComponent = __webpack_require__(17)
 /* script */
 var __vue_script__ = __webpack_require__(505)
 /* template */
@@ -73362,6 +73362,36 @@ var _this = this;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'left-side',
@@ -73370,58 +73400,38 @@ var _this = this;
     data: function data() {
         return {
             mapName: _this.name + "-map",
-            treeData: [{
-                "id": 0,
-                "text": "Kigali",
-                "value": "Kigali",
-                "icon": "",
-                "opened": true,
-                "selected": false,
-                "disabled": false,
-                "loading": false,
-                "children": [{
-                    "id": 1,
-                    "text": "Excel",
-                    "value": "Excel",
-                    "icon": "",
-                    "opened": false,
-                    "selected": true,
-                    "disabled": false,
-                    "loading": false,
-                    "children": [{
-                        "text": "RRA-450B",
-                        "value": "RRA-450B",
-                        "icon": "",
-                        "opened": false,
-                        "selected": true,
-                        "disabled": false,
-                        "loading": false
-                    }]
-                }, {
-                    "id": 2,
-                    "text": "Volcon",
-                    "value": "Volcon",
-                    "icon": "",
-                    "opened": false,
-                    "selected": false,
-                    "disabled": false,
-                    "loading": false,
-                    "children": [{
-                        "text": "RRA-450B",
-                        "value": "RRA-450B",
-                        "icon": "",
-                        "opened": false,
-                        "selected": true,
-                        "disabled": false,
-                        "loading": false
-                    }]
-                }]
-            }]
+            account_name: '',
+            treeData: []
         };
     },
+    created: function created() {
+        var _this2 = this;
+
+        axios.get('get_accounts').then(function (accounts) {
+
+            _this2.treeData = accounts.data;
+        });
+    },
+
     methods: {
-        itemClick: function itemClick(node) {
-            console.log(node.model.text + ' clicked !');
+        addAccount: function addAccount(event) {
+            var _this3 = this;
+
+            this.getUser();
+            //TODO: now implement api to submit data on backend
+            axios.get('get_user').then(function (user) {
+                // console.log(user.data.id)
+                axios.post('add_account', { name: _this3.account_name, user_id: user.data.id }).then(function (response) {
+                    console.log(response);
+                });
+            });
+        },
+        getUser: function getUser() {
+            var _this4 = this;
+
+            axios.get('get_user').then(function (user) {
+                _this4.user = user.data;
+            });
         }
     },
     mounted: function mounted() {
@@ -73450,13 +73460,136 @@ var render = function() {
           "allow-batch": "",
           "whole-row": ""
         },
-        on: { "item-click": _vm.itemClick }
-      })
+        on: { "item-click": _vm.addAccount }
+      }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "exampleModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "form",
+                    { attrs: { action: "#" }, on: { submit: _vm.addAccount } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.account_name,
+                            expression: "account_name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { placeholder: "name" },
+                        domProps: { value: _vm.account_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.account_name = $event.target.value
+                          }
+                        }
+                      }),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Save changes")]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ]
+          )
+        ]
+      )
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "col-md-2 add_account",
+        attrs: { "data-toggle": "modal", "data-target": "#exampleModal" }
+      },
+      [_c("button", { staticClass: "btn" }, [_vm._v("Add Account")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Add Account")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -73475,7 +73608,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(508)
 }
-var normalizeComponent = __webpack_require__(27)
+var normalizeComponent = __webpack_require__(17)
 /* script */
 var __vue_script__ = __webpack_require__(510)
 /* template */
@@ -73859,7 +73992,7 @@ var ITEM_HEIGHT_LARGE = 32;
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(27)
+var normalizeComponent = __webpack_require__(17)
 /* script */
 var __vue_script__ = __webpack_require__(512)
 /* template */
@@ -74311,23 +74444,14 @@ if (false) {
 
 /***/ }),
 /* 515 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 516 */,
-/* 517 */,
-/* 518 */,
-/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(27)
+var normalizeComponent = __webpack_require__(17)
 /* script */
-var __vue_script__ = __webpack_require__(520)
+var __vue_script__ = __webpack_require__(516)
 /* template */
-var __vue_template__ = __webpack_require__(521)
+var __vue_template__ = __webpack_require__(517)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74366,7 +74490,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 520 */
+/* 516 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74387,7 +74511,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: ['name'],
     data: function data() {},
-    methods: {},
+    methods: {
+        login: function login() {}
+    },
     mounted: function mounted() {
         console.log('mounted nav header component');
     }
@@ -74395,7 +74521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 521 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74458,6 +74584,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-00591eaa", module.exports)
   }
 }
+
+/***/ }),
+/* 518 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -65,6 +65,7 @@
         </main>
     </div>
 
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-mCNPoZBZge-IeeMjSJFVX1RITECFR18" ></script>
     <script src="{{asset ('js/animate.js')}}"></script>
     <script src="{{asset ('js/sliding.js')}}"></script>

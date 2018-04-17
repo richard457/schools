@@ -57,7 +57,7 @@
         },
         methods: {
 
-            itemClick(node) {
+            addAccount(node) {
 
             },
             Play_back() {
