@@ -20,6 +20,7 @@
                     </div>
                     <div class="modal-body">
                         <form v-on:submit="addAccount" action="#">
+                            <multiselect v-model="value" tag-placeholder="To account" placeholder="Search" label="name" track-by="code" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
 
                             <input class="form-control" v-model="account_name" placeholder="name"><br>
 
@@ -34,19 +35,50 @@
                 </div>
             </div>
         </div>
+        <fab
+            :position="position"
+            :bg-color="bgColor"
+            :actions="fabActions"
+            @cache="cache"
+            @alertMe="alert"
+            ></fab>
     </div>
 
 </template>
 <script>
+import Multiselect from 'vue-multiselect'
+import fab from 'vue-fab'
+
     export default {
         name: 'left-side',
-
         props: ['name'],
+        components: { Multiselect,fab },
         data: () => {
             return {
+                selected_parent: '',
                 mapName: this.name + "-map",
                 account_name:'',
                 treeData: [] ,
+                value: [
+
+                ],
+                options: [
+                    { name: 'Vue.js', code: 'vu' },
+                    { name: 'Javascript', code: 'js' },
+                    { name: 'Open Source', code: 'os' }
+                ],
+                bgColor: '#778899',
+                position: 'bottom-right',
+                fabActions: [
+                    {
+                        name: 'cache',
+                        icon: 'cached'
+                    },
+                    {
+                        name: 'alertMe',
+                        icon: 'add_alert'
+                    }
+                ]
             }
 
         },
@@ -58,7 +90,14 @@
             })
         },
         methods: {
-            
+            addTag (newTag) {
+                const tag = {
+                    name: newTag,
+                    code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+                }
+                this.options.push(tag)
+                this.value.push(tag)
+            },
             addAccount(event) {
                 this.getUser();
                 //TODO: now implement api to submit data on backend
@@ -78,6 +117,12 @@
                 .then(user=>{
                     this.user = user.data;
                 })
+            },
+            cache(){
+                console.log('Cache Cleared');
+            },
+            alert(){
+                alert('Clicked on alert icon');
             }
         },
         mounted: function () {
@@ -86,4 +131,5 @@
 
     }
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
