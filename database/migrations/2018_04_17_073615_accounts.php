@@ -15,6 +15,7 @@ class Accounts extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
+
             $table->nestedSet();
             $table->string('value');
             $table->string('text');

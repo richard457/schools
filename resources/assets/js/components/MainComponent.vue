@@ -1,6 +1,6 @@
 <style scoped>
     .google-map {
-        width: 101%;
+
         height: 720px;
         margin: 0 auto;
         background: gray;
@@ -9,7 +9,7 @@
 
 <template>
 
-    <div class="col-md-10">
+    <div style="min-width:100%">
         <div class="google-map" :id="mapName"></div>
     </div>
 
@@ -38,6 +38,7 @@
                 marker: null,
                 markers: [],
                 coords_n: [
+
                     {latitude: 51.50161592009493, longitude: -0.19157997085812895},
                     {latitude: 51.50176284951284, longitude: -0.191129359743627},
                     {latitude: 51.50309854976581, longitude: -0.19160142853024809},
@@ -67,10 +68,8 @@
 
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
-                controlUI.style.backgroundColor = '#fff';
-                controlUI.style.border = '2px solid #fff';
+
                 controlUI.style.borderRadius = '3px';
-                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
                 controlUI.style.cursor = 'pointer';
                 controlUI.style.marginBottom = '22px';
                 controlUI.style.textAlign = 'center';
@@ -79,13 +78,13 @@
 
                 // Set CSS for the control interior.
                 var controlText = document.createElement('div');
-                controlText.style.color = 'rgb(25,25,25)';
+
                 controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
                 controlText.style.fontSize = '16px';
                 controlText.style.lineHeight = '38px';
                 controlText.style.paddingLeft = '5px';
                 controlText.style.paddingRight = '5px';
-                controlText.innerHTML = `<button type='button' class="btn btn-info" @click="Play_back">Play back</button>`;
+                controlText.innerHTML = `<button type='button' class="btn" @click="Play_back">Play back</button>`;
                 controlUI.appendChild(controlText);
 
                 // Setup the click event listeners: simply set the map to Chicago.
@@ -97,6 +96,7 @@
                 let directionsDisplay = new google.maps.DirectionsRenderer();
 
                 let directionsService = new google.maps.DirectionsService();
+
 
                 let start = new google.maps.LatLng(this.markerCoordinates[0].latitude, this.markerCoordinates[0].longitude);
 

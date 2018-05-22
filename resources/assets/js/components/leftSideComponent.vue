@@ -3,12 +3,11 @@
     <div class="col-md-2">
 
         <tree-component :data="treeData" show-checkbox multiple allow-batch whole-row
-                        @item-click="addAccount"></tree-component>
-
-        <div class="col-md-2 add_account" data-toggle="modal" data-target="#exampleModal">
-            <button class="btn">Add Account</button>
-        </div>
+                        @item-click="extraOption"></tree-component>
         <!-- Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" id="modal_one" style="display: none;" data-target="#exampleModal">
+            Launch demo modal
+        </button>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -20,7 +19,7 @@
                     </div>
                     <div class="modal-body">
                         <form v-on:submit="addAccount" action="#">
-                            <multiselect v-model="value" tag-placeholder="To account" placeholder="Search" label="name" track-by="code" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+                            <multiselect v-model="selected_parent" tag-placeholder="To account" placeholder="Search" label="name" track-by="value" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect><br>
 
                             <input class="form-control" v-model="account_name" placeholder="name"><br>
 
@@ -40,7 +39,8 @@
             :bg-color="bgColor"
             :actions="fabActions"
             @cache="cache"
-            @alertMe="alert"
+            @alertMe="showModal"
+            
             ></fab>
     </div>
 
@@ -48,27 +48,20 @@
 <script>
 import Multiselect from 'vue-multiselect'
 import fab from 'vue-fab'
-
     export default {
         name: 'left-side',
         props: ['name'],
         components: { Multiselect,fab },
         data: () => {
             return {
-                selected_parent: '',
+                selected_parent: [],
                 mapName: this.name + "-map",
                 account_name:'',
                 treeData: [] ,
-                value: [
-
-                ],
-                options: [
-                    { name: 'Vue.js', code: 'vu' },
-                    { name: 'Javascript', code: 'js' },
-                    { name: 'Open Source', code: 'os' }
-                ],
+                options:[],
                 bgColor: '#778899',
                 position: 'bottom-right',
+                iconSize: 'small',
                 fabActions: [
                     {
                         name: 'cache',
@@ -76,17 +69,20 @@ import fab from 'vue-fab'
                     },
                     {
                         name: 'alertMe',
-                        icon: 'add_alert'
+                        icon: 'user_group',
+                        iconSize: 'small',
                     }
                 ]
             }
-
         },
         created(){
+
+            document.getElementById("sidebarCollapse").click();
             axios.get('get_accounts')
             .then(accounts=>{
-               
+
                 this.treeData = accounts.data;
+                this.options = accounts.data[0].children.map(e=>{return {"name": e.value,"id":e.id}});
             })
         },
         methods: {
@@ -96,21 +92,24 @@ import fab from 'vue-fab'
                     code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
                 }
                 this.options.push(tag)
-                this.value.push(tag)
+                this.selected_parent.push(tag)
             },
-            addAccount(event) {
+            addAccount() {
                 this.getUser();
                 //TODO: now implement api to submit data on backend
                 axios.get('get_user')
                 .then(user=>{
                     // console.log(user.data.id)
-                    axios.post('add_account',{name:this.account_name,user_id:user.data.id})
-                    .then(response => {
-                      console.log(response);
+                    axios.post('add_account',{name:this.account_name,user_id:user.data.id,selected_parent:this.selected_parent})
+                    .then(() => {
+                        //refresh the tree
+                        axios.get('get_accounts')
+                            .then(accounts=>{
+                                this.treeData = accounts.data;
+                                this.options = accounts.data[0].children.map(e=>{return {"name": e.value,"id":e.id}});
+                            })
                     });
                 })
-
-                
             },
             getUser(){
                 axios.get('get_user')
@@ -119,10 +118,13 @@ import fab from 'vue-fab'
                 })
             },
             cache(){
-                console.log('Cache Cleared');
+                
             },
-            alert(){
-                alert('Clicked on alert icon');
+            showModal(){
+                document.getElementById("modal_one").click();
+            },
+            extraOption(event){
+
             }
         },
         mounted: function () {

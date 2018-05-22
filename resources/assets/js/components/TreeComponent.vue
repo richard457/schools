@@ -1,6 +1,6 @@
 <template>
     <div :class="classes" role="tree" onselectstart="return false">
-        <ul :class="containerClasses" role="group">
+        <ul style="color: #000;" :class="containerClasses" role="group">
             <tree-item v-for="(child, index) in data"
                        :key="index"
                        :data="child"
@@ -166,6 +166,7 @@
                 } else {
                     this.handleSingleSelectItems(oriNode, oriItem)
                 }
+
                 this.$emit('item-click', oriNode, oriItem)
             },
             handleSingleSelectItems(oriNode, oriItem) {

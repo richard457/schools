@@ -22,6 +22,8 @@ import Rx from 'rxjs/Rx';
 import VueRx from 'vue-rx';
 // VueRx can use libraries other than RxJS
 // that implement the observable interface.
+
+
 Vue.use(VueRx, Rx);
 
 
