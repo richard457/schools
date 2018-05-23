@@ -13,22 +13,22 @@ class Accounts extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->increments('id');
+        // Schema::create('accounts', function (Blueprint $table) {
+        //     $table->increments('id');
 
-            $table->nestedSet();
-            $table->string('value');
-            $table->string('text');
-            $table->boolean('opened')->default(false);
-            $table->boolean('selected')->default(false);
-            $table->boolean('disabled')->default(false);
-            $table->boolean('loading')->default(false);
-            $table->string('icon')->default("");
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        //     $table->nestedSet();
+        //     $table->string('value');
+        //     $table->string('text');
+        //     $table->boolean('opened')->default(false);
+        //     $table->boolean('selected')->default(false);
+        //     $table->boolean('disabled')->default(false);
+        //     $table->boolean('loading')->default(false);
+        //     $table->string('icon')->default("");
+        //     $table->unsignedInteger('user_id');
+        //     $table->foreign('user_id')->references('id')->on('users');
+        //     $table->rememberToken();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -38,9 +38,9 @@ class Accounts extends Migration
      */
     public function down()
     {
-        Schema::table('accounts', function (Blueprint $table) {
-            $table->dropNestedSet();
-        });
-        Schema::dropIfExists('accounts');
+        // Schema::table('accounts', function (Blueprint $table) {
+        //     $table->dropNestedSet();
+        // });
+        // Schema::dropIfExists('accounts');
     }
 }

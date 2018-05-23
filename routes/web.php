@@ -23,6 +23,9 @@ Route::get('get_user', 'User@getUser')->name('home');
 Route::get('get_accounts', 'AccountController@getAccount')->name('home');
 Route::get('get_data', 'DataController@getData')->name('data');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/questions', 'HomeController@questions');
+Route::post('add_question', 'HomeController@addQuestion');
+Route::get('add_answer/{id}', 'HomeController@addAnswer');
+Route::get('save_answer/{id}', 'HomeController@saveAnswer');

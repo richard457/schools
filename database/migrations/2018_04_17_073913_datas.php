@@ -13,15 +13,15 @@ class Datas extends Migration
      */
     public function up()
     {
-        Schema::create('data', function (Blueprint $table) {
-            $table->increments('id');
-            $table->double('longitude');
-            $table->unsignedInteger('vehicle_id');
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+        // Schema::create('data', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->double('longitude');
+        //     $table->unsignedInteger('vehicle_id');
+        //     $table->foreign('vehicle_id')->references('id')->on('vehicles');
 
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        //     $table->rememberToken();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -31,6 +31,6 @@ class Datas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data');
+        // Schema::dropIfExists('data');
     }
 }

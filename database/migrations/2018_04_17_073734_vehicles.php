@@ -13,13 +13,13 @@ class Vehicles extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('plate_number')->unique();
-            $table->string('owner');
-            $table->timestamps();
-        });
+        // Schema::create('vehicles', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('name');
+        //     $table->string('plate_number')->unique();
+        //     $table->string('owner');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -29,6 +29,6 @@ class Vehicles extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        // Schema::dropIfExists('vehicles');
     }
 }
