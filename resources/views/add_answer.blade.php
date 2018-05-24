@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h5 class="card-title"><span class="badge badge-light">{{$f->id}}</span></h5>
                 <p class="card-text">{{$f->answer}}</p>
-                <a href="/save_answer/{{$f->id}}" class="btn btn-primary">Answer</a>
+                <a href="/save_answer/{{$q_id}}/{{$f->id}}" class="btn btn-primary">Answer</a>
             </div>
         </div>
     @endforeach

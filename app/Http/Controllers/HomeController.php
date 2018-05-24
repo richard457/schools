@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use Illuminate\Support\Facades\Auth;
 use Response;
 use Log;
 class HomeController extends Controller
@@ -15,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -28,22 +29,25 @@ class HomeController extends Controller
         $questions = Question::all();
         $count = sizeof($questions);
         $answers = Answer::all();
+        $rol = Auth::user()->role;
+        $marks =Question::whereright_answer(1)->get();
 
         return view('home')->with('questions',$questions)
             ->with('count',$count)
+            ->with('role',$rol)
+            ->with('mark',sizeof ($marks)* 2)
             ->with ('answers',$answers);
     }
     public function questions(Request $request){
-        
         Question::create([
             'question'=>$request->get('question')
         ]);
-        
         return redirect()->to('home');
     }
     public function addAnswer($id){
         $answer = Answer::wherequestion_id($id)->get();
-        return view('add_answer')->with('id',$id)->with('answers',$answer);
+
+        return view('add_answer')->with('q_id',$id)->with('answers',$answer);
     }
     public function addQuestion(Request $request){
         $error_map =[];
@@ -88,10 +92,13 @@ class HomeController extends Controller
         ]);
         return redirect()->to('home');
     }
-    //TODO to calculate point we need to have all answerd option and match with the real right choice and count multipy it with 2 to get out of 20
-    public function saveAnswer($question_id){
-        $a =  Question::find($question_id)->first();
+    //TODO to calculate point we need to have all answered option and match with the real right choice and count multipy it with 2 to get out of 20
+    public function saveAnswer($question_id,$answer_id){
+        $is_answer_marque_as_right = Answer::find($answer_id)->first()->marked;
+        $a =  Question::find($question_id);
         $a->marked = true;
+        $a->right_answer = $is_answer_marque_as_right;
         $a->save ();
+        return redirect()->to('home');
     }
 }

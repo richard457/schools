@@ -25,6 +25,20 @@
                 </div>
             @endif
         @endforeach
+        @if($count < 10 || $count ==0)
+            @if($role == 'super')
+                <div class="card col-md-5 ml-1 mt-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <p>No Question sir</p>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Test</a>
+                    </div>
+                </div>
+            @endif
+        @endif
+
+        <div class="container">
+           <h1 style="margin-left: 430px">{{$mark}}/ 20 Marks</h1>
+        </div>
     </div>
 
     <!-- The Modal -->

@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->text('question');
             $table->boolean('marked')->default(false);
+            $table->boolean('right_answer')->default(false);
             $table->timestamps();
         });
     }

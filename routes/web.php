@@ -28,4 +28,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/questions', 'HomeController@questions');
 Route::post('add_question', 'HomeController@addQuestion');
 Route::get('add_answer/{id}', 'HomeController@addAnswer');
-Route::get('save_answer/{id}', 'HomeController@saveAnswer');
+Route::get('save_answer/{id}/{a_id}', 'HomeController@saveAnswer');
