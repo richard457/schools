@@ -28,7 +28,7 @@
 
     <!-- The Modal -->
     <div class="modal" id="myModal">
-        {{--add_question--}}
+
         <form method="POST" action="/add_question">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -44,15 +44,15 @@
                     <span>Add Answer by y/n</span>
                     <div class="row">
                         <div class="col-md-5 mt-4">
-                            <input type="text" class="form-control mt-2" name="question">
-                            <input type="text" class="form-control mt-2" name="question">
-                            <input type="text" class="form-control mt-2" name="question">
+                            <input type="text" class="form-control mt-2" name="answer_one">
+                            <input type="text" class="form-control mt-2" name="answer_two">
+                            <input type="text" class="form-control mt-2" name="answer_three">
                         </div>
                         <div class="col-md-5">
                             <span>Mark it as the right answer</span>
-                            <input type="text" class="form-control mt-2" name="answer" placeholder="no">
-                            <input type="text" class="form-control mt-2" name="answer" placeholder="no">
-                            <input type="text" class="form-control mt-2" name="answer" placeholder="no">
+                            <input type="text" class="form-control mt-2" name="choice_one" placeholder="no">
+                            <input type="text" class="form-control mt-2" name="choice_two" placeholder="no">
+                            <input type="text" class="form-control mt-2" name="choice_three" placeholder="no">
 
                         </div>
                     </div>
