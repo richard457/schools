@@ -15,7 +15,8 @@
                     <a href="add_answer/{{$f->id}}" class="btn btn-primary" >Answer</a>
                 </div>
             </div>
-            @else
+                {{--should be 10 question limit--}}
+            @elseif($count <10)
                 <div class="card col-md-5 ml-1 mt-2" style="width: 18rem;">
                     <div class="card-body">
                     <p>No Question sir</p>

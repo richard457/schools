@@ -26,9 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         $questions = Question::all();
+        $count = sizeof($questions);
         $answers = Answer::all();
 
-        return view('home')->with('questions',$questions)->with ('answers',$answers);
+        return view('home')->with('questions',$questions)
+            ->with('count',$count)
+            ->with ('answers',$answers);
     }
     public function questions(Request $request){
         
