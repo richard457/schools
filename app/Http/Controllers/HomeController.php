@@ -46,8 +46,12 @@ class HomeController extends Controller
         return view('add_answer')->with('id',$id)->with('answers',$answer);
     }
     public function addQuestion(Request $request){
-
         $error_map =[];
+        $questions = Question::all();
+        $count = sizeof($questions);
+        if($count == 10){
+            $error_map[] = 'Ten Questions are the limit for one Test';
+        }
         if(!$request->has ('choice_one')){
             $error_map[] = 'choice one required';
         }else if(!$request->has ('choice_two')){
