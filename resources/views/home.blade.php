@@ -4,6 +4,9 @@
     <body>
 
     <div class="row">
+        <div class="container">
+            <h1 style="margin-left: 430px">{{$mark}}/ 20 Marks</h1>
+        </div>
         @foreach($questions as $f)
 
             @if($f->marked != 1)
@@ -36,9 +39,7 @@
             @endif
         @endif
 
-        <div class="container">
-           <h1 style="margin-left: 430px">{{$mark}}/ 20 Marks</h1>
-        </div>
+
     </div>
 
     <!-- The Modal -->

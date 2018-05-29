@@ -50,7 +50,7 @@ return [
 
             'database' => 'quick',
             'username' => 'root',
-            'password' => '',
+            'password' => 'nm',
 
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',

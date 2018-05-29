@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -38,11 +38,14 @@ class HomeController extends Controller
             ->with('mark',sizeof ($marks)* 2)
             ->with ('answers',$answers);
     }
-    public function questions(Request $request){
-        Question::create([
-            'question'=>$request->get('question')
-        ]);
-        return redirect()->to('home');
+    public function questions(){
+
+        $questions = Question::wheremarked(0)->get();
+        return Response::json($questions);
+    }
+    public function getAnswers($q_id){
+        $answer = Answer::wherequestion_id($q_id)->get();
+        return Response::json($answer);
     }
     public function addAnswer($id){
         $answer = Answer::wherequestion_id($id)->get();
