@@ -43,8 +43,8 @@ class HomeController extends Controller
         $questions = Question::wheremarked(0)->get();
         return Response::json($questions);
     }
-    public function getAnswers($q_id){
-        $answer = Answer::wherequestion_id($q_id)->get();
+    public function getAnswers(Request $request){
+        $answer = Answer::wherequestion_id($request->get('id'))->get();
         return Response::json($answer);
     }
     public function addAnswer($id){
@@ -103,5 +103,14 @@ class HomeController extends Controller
         $a->right_answer = $is_answer_marque_as_right;
         $a->save ();
         return redirect()->to('home');
+    }
+    public function saveAnswerApi(Request $request){
+
+        $is_answer_marque_as_right = Answer::find($request->get('answer_id'))->first()->marked;
+        $a =  Question::find($request->get('question_id'));
+        $a->marked = true;
+        $a->right_answer = $is_answer_marque_as_right;
+        $a->save ();
+        return Response::json(['status'=>200]);
     }
 }
