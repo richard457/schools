@@ -33,3 +33,4 @@ Route::get('add_answer/{id}', 'HomeController@addAnswer');
 
 Route::get('save_answer/{id}/{a_id}', 'HomeController@saveAnswer');
 Route::get('save_answers', 'HomeController@saveAnswerApi');
+Route::get('get_marks', 'HomeController@getMarks');

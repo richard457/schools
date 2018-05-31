@@ -104,8 +104,11 @@ class HomeController extends Controller
         $a->save ();
         return redirect()->to('home');
     }
+    public function getMarks(){
+        $marks =Question::whereright_answer(1)->get();
+        return Response::json(['mark'=> sizeof($marks) * 2]);
+    }
     public function saveAnswerApi(Request $request){
-
         $is_answer_marque_as_right = Answer::find($request->get('answer_id'))->first()->marked;
         $a =  Question::find($request->get('question_id'));
         $a->marked = true;
