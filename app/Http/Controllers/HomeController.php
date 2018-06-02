@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Response;
 use Log;
 class HomeController extends Controller
@@ -123,7 +125,11 @@ class HomeController extends Controller
     public function upload(Request $request){
 
         $path = $request->file('picture')->storePublicly('avatars');
-         Log::debug($path);
-//        return $path;
+         Post::create([
+            'image_url'=>Storage::url($path)
+         ]);
+         $posts = Post::all();
+         return redirect()->to('home')->with('posts',$posts);
     }
+
 }

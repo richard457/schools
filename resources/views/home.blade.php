@@ -40,6 +40,80 @@
                 </section>
             </main>
         </div>
+
+        <section class="gallery-block cards-gallery">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 transform-on-hover">
+                            <a class="lightbox" href="#">
+                                <img src="{{asset('img/image1.jpg')}}" alt="Card Image" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6><a href="#">Lorem Ipsum</a></h6>
+                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 transform-on-hover">
+                            <a class="lightbox" href="#">
+                                <img src="{{asset('img/image2.jpg')}}" alt="Card Image" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6><a href="#">Lorem Ipsum</a></h6>
+                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 transform-on-hover">
+                            <a class="lightbox" href="#">
+                                <img src="{{asset('img/image3.jpg')}}" alt="Card Image" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6><a href="#">Lorem Ipsum</a></h6>
+                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 transform-on-hover">
+                            <a class="lightbox" href="#">
+                                <img src="{{asset('img/image4.jpg')}}" alt="Card Image" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6><a href="#">Lorem Ipsum</a></h6>
+                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 transform-on-hover">
+                            <a class="lightbox" href="{{asset('img/image5.jpg')}}">
+                                <img src="{{asset('img/image5.jpg')}}" alt="Card Image" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6><a href="#">Lorem Ipsum</a></h6>
+                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 transform-on-hover">
+                            <a class="lightbox" href="../img/image6.jpg">
+                                <img src="{{asset('img/image6.jpg')}}" alt="Card Image" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6><a href="#">Lorem Ipsum</a></h6>
+                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
 
