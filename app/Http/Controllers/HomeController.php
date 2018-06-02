@@ -28,17 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $questions = Question::all();
-        $count = sizeof($questions);
-        $answers = Answer::all();
-        $rol = Auth::user()->role;
-        $marks =Question::whereright_answer(1)->get();
 
-        return view('home')->with('questions',$questions)
-            ->with('count',$count)
-            ->with('role',$rol)
-            ->with('mark',sizeof ($marks)* 2)
-            ->with ('answers',$answers);
+        $posts = Post::all();
+        return view('home')->with('posts',$posts);
     }
     public function questions(){
 

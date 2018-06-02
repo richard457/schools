@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <div class="modal" id="myModal">
+    <div class="modal" id="uploadModal">
 
         <form method="POST" action="/upload" enctype="multipart/form-data">
         <div class="modal-dialog">
@@ -16,6 +16,20 @@
             <button class="btn btn-primary rounded-0" type="submit">Upload</button>
             </div>
         </div>
+        </form>
+    </div>
+
+    <div class="modal" id="addInfoModal">
+
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    @csrf
+
+                    <button class="btn btn-primary rounded-0" type="submit">Upload</button>
+                </div>
+            </div>
         </form>
     </div>
     </body>
@@ -31,7 +45,7 @@
             </nav>
             <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
                 <div class="m-lg-5 container" style="margin-left: 445px">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Upload Image</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">Upload Image</button>
                 </div>
                 <section class="row">
                     <div class="col-sm-12">
@@ -45,72 +59,20 @@
             <div class="container">
 
                 <div class="row">
+
+                    @foreach($posts as $post)
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-0 transform-on-hover">
-                            <a class="lightbox" href="#">
-                                <img src="{{asset('img/image1.jpg')}}" alt="Card Image" class="card-img-top">
+                            <a class="lightbox" data-toggle="modal" data-target="#addInfoModal">
+                                <img src="{{$post->image_url}}" alt="Card Image" class="card-img-top">
                             </a>
                             <div class="card-body">
-                                <h6><a href="#">Lorem Ipsum</a></h6>
-                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                <h6><a data-toggle="modal" data-target="#addInfoModal">Lorem Ipsum</a></h6>
+                                <p class="text-muted card-text">{{$post->description}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 transform-on-hover">
-                            <a class="lightbox" href="#">
-                                <img src="{{asset('img/image2.jpg')}}" alt="Card Image" class="card-img-top">
-                            </a>
-                            <div class="card-body">
-                                <h6><a href="#">Lorem Ipsum</a></h6>
-                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 transform-on-hover">
-                            <a class="lightbox" href="#">
-                                <img src="{{asset('img/image3.jpg')}}" alt="Card Image" class="card-img-top">
-                            </a>
-                            <div class="card-body">
-                                <h6><a href="#">Lorem Ipsum</a></h6>
-                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 transform-on-hover">
-                            <a class="lightbox" href="#">
-                                <img src="{{asset('img/image4.jpg')}}" alt="Card Image" class="card-img-top">
-                            </a>
-                            <div class="card-body">
-                                <h6><a href="#">Lorem Ipsum</a></h6>
-                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 transform-on-hover">
-                            <a class="lightbox" href="{{asset('img/image5.jpg')}}">
-                                <img src="{{asset('img/image5.jpg')}}" alt="Card Image" class="card-img-top">
-                            </a>
-                            <div class="card-body">
-                                <h6><a href="#">Lorem Ipsum</a></h6>
-                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 transform-on-hover">
-                            <a class="lightbox" href="../img/image6.jpg">
-                                <img src="{{asset('img/image6.jpg')}}" alt="Card Image" class="card-img-top">
-                            </a>
-                            <div class="card-body">
-                                <h6><a href="#">Lorem Ipsum</a></h6>
-                                <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
