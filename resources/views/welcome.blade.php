@@ -1,42 +1,7 @@
 @extends('layouts.app')
 @section('content')
-{{--<div class="container mt-5">--}}
-  {{--<form class="form-horizontal" method="POST" action="{{ route('login') }}">--}}
-    {{--@csrf--}}
-    {{--<div class="row">--}}
-      {{--<div class="col-md-3"></div>--}}
-      {{--<div class="col-md-6">--}}
-        {{--<div class="form-group has-danger">--}}
-          {{--<label class="sr-only" for="email">E-Mail Address</label>--}}
-          {{--<div class="input-group mb-2 mr-sm-2 mb-sm-0">--}}
-            {{--<div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>--}}
-            {{--<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>--}}
-          {{--</div>--}}
-        {{--</div>--}}
-      {{--</div>--}}
-
-    {{--</div>--}}
-    {{--<div class="row">--}}
-      {{--<div class="col-md-3"></div>--}}
-      {{--<div class="col-md-6">--}}
-        {{--<div class="form-group">--}}
-          {{--<label class="sr-only" for="password">Password</label>--}}
-          {{--<div class="input-group mb-2 mr-sm-2 mb-sm-0">--}}
-            {{--<div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>--}}
-            {{--<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>--}}
-          {{--</div>--}}
-        {{--</div>--}}
-          {{--<div class="container" style="margin-left: 125px;">--}}
-              {{--<button type="submit" class="btn btn-primary w-50">Login</button>--}}
-          {{--</div>--}}
-      {{--</div>--}}
-    {{--</div>--}}
-
-  {{--</form>--}}
-{{--</div>   --}}
 
 <body>
-
 <!-- Header Start -->
 <header id="header">
     <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar nav-bg">
@@ -58,63 +23,19 @@
                             Home
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pages
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{route('login')}}">
+                            Login
                         </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="about-us.html">About Us 1</a>
-                            <a class="dropdown-item" href="about-us2.html">About Us 2</a>
-                            <a class="dropdown-item" href="team.html">Team Members</a>
-                            <a class="dropdown-item" href="services.html">Services</a>
-                            <a class="dropdown-item" href="contact-us.html">Contact Us 1</a>
-                            <a class="dropdown-item" href="contact-us2.html">Contact Us 2</a>
-                            <a class="dropdown-item" href="404.html">404</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Components
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="tab.html">Tabs</a>
-                            <a class="dropdown-item" href="alert.html">Alert</a>
-                            <a class="dropdown-item" href="accordion.html">Accordions</a>
-                            <a class="dropdown-item" href="pricing.html">Pricing Tables</a>
-                            <a class="dropdown-item" href="buttons.html">Buttons</a>
-                            <a class="dropdown-item" href="icons.html">Icons</a>
-                            <a class="dropdown-item" href="carousel.html">Carousel</a>
-                            <a class="dropdown-item" href="counter.html">Counter</a>
-                            <a class="dropdown-item" href="map.html">Google Map</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Portfolio
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="portfolio-2.html">Portfolio 2 columns</a>
-                            <a class="dropdown-item" href="portfolio.html">Portfolio 3 columns</a>
-                            <a class="dropdown-item" href="portfolio-single.html">Portfolio Single</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Blog
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="blog.html">Blog Page</a>
-                            <a class="dropdown-item" href="blog-single.html">Blog Single Page</a>
-                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Contact Us
                         </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="contact-us.html">Contact Us 1</a>
-                            <a class="dropdown-item" href="contact-us2.html">Contact Us 2</a>
-                        </div>
+                        {{--<div class="dropdown-menu">--}}
+                            {{--<a class="dropdown-item" href="contact-us.html">Contact Us 1</a>--}}
+                            {{--<a class="dropdown-item" href="contact-us2.html">Contact Us 2</a>--}}
+                        {{--</div>--}}
                     </li>
                 </ul>
                 <!-- Search Box Start -->
@@ -144,28 +65,12 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    Pages
-                </a>
+
                 <ul class="dropdown">
-                    <li>
-                        <a href="about-us.html">About Us 1</a>
-                    </li>
-                    <li>
-                        <a href="about-us2.html">About Us 2</a>
-                    </li>
-                    <li>
-                        <a href="team.html">Team Members</a>
-                    </li>
                     <li>
                         <a href="services.html">Services</a>
                     </li>
-                    <li>
-                        <a href="contact-us.html">Contact Us 1</a>
-                    </li>
-                    <li>
-                        <a href="contact-us2.html">Contact Us 2</a>
-                    </li>
+
                     <li>
                         <a href="404.html">404</a>
                     </li>
@@ -252,33 +157,15 @@
     </nav>
 </header>
 <!-- Header End -->
-
-<!-- Call to action Section -->
-<section class="call-to-action-section">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-md-8 col-lg-8 col-xs-12 text-left wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1> </h1><br>
-                <h1>You are Trying Free Version</h1>
-                <h3>Purchase Full Version to Get All Pages and Features!</h3>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xs-12 mt-4 text-right wow animated fadeInRight" data-wow-delay=".3s"><br>
-                <a href="https://rebrand.ly/material-bs4-purchase" rel="nofollow" target="_blank" class="animated4 btn btn-common"><i class="material-icons mdi mdi-cart"></i> Purchase Now</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Call to action Section End -->
-
 <!-- About Section -->
-<section class="Material-about-section section-padding">
+<section class="Material-about-section section-padding mt-5">
     <div class="container">
         <div class="row">
             <!-- Single About -->
             <div class="col-md-6 col-lg-3 col-xl-3 wow animated fadeInUp" data-wow-delay=".2s">
                 <div class="about-single">
                     <i class="material-icons mdi mdi-layers"></i>
-                    <h2 class="subtitle">Bootstrap 4</h2>
+                    <h2 class="subtitle">Ikizami</h2>
                     <p>Excepteur sint occaecat cupidatat non proidt, sunt in culpa qui.</p>
                 </div>
             </div>
@@ -286,7 +173,7 @@
             <div class="col-md-6 col-lg-3 col-xl-3 wow animated fadeInUp" data-wow-delay=".3s">
                 <div class="about-single">
                     <i class="material-icons mdi mdi-cards-playing-outline"></i>
-                    <h2 class="subtitle">Material Design</h2>
+                    <h2 class="subtitle">Amabwiriza</h2>
                     <p>Excepteur sint occaecat cupidatat non proidt, sunt in culpa qui.</p>
                 </div>
             </div>
@@ -315,7 +202,7 @@
 <section class="welcome-section section-padding section-dark">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-7 col-xs-12">
+            <div class="col-md-12 col-lg-12 col-xs-12">
                 <div class="Material-tab">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -353,18 +240,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-5 col-xs-12 welcome-column">
-                <div class="video-gallery">
-                    <img class="img-fluid" src="assets/images/about/video.jpg" alt="">
-                    <div class="overlay-gallery">
-                        <div class="icon-holder">
-                            <div class="icon">
-                                <a href="https://www.youtube.com/watch?v=r44RKWyfcFw" class="video-popup wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0.3s"><i class="mdi mdi-play-circle-outline"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
@@ -458,22 +334,7 @@
 </section>
 <!-- Services Section End -->
 
-<!-- Call to action Section -->
-<section class="call-to-action-section">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-md-8 col-lg-8 col-xs-12 text-left wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1> </h1><br>
-                <h1>You are Trying Free Version</h1>
-                <h3>Purchase Full Version to Get All Pages and Features!</h3>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xs-12 mt-4 text-right wow animated fadeInRight" data-wow-delay=".3s"><br>
-                <a href="https://rebrand.ly/material-bs4-purchase" rel="nofollow" target="_blank" class="animated4 btn btn-common"><i class="material-icons mdi mdi-cart"></i> Purchase Now</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Call to action Section End -->
+
 
 <!-- work-counter area -->
 <section class="work-counter-section section-padding">
@@ -516,22 +377,6 @@
 </section>
 <!-- work-counter area end -->
 
-<!-- Call to action Section -->
-<section class="call-to-action-section">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-md-8 col-lg-8 col-xs-12 text-left wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1> </h1><br>
-                <h1>You are Trying Free Version</h1>
-                <h3>Purchase Full Version to Get All Pages and Features!</h3>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xs-12 mt-4 text-right wow animated fadeInRight" data-wow-delay=".3s"><br>
-                <a href="https://rebrand.ly/material-bs4-purchase" rel="nofollow" target="_blank" class="animated4 btn btn-common"><i class="material-icons mdi mdi-cart"></i> Purchase Now</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Call to action Section End -->
 
 <!-- Start Testimonial Section  -->
 <div class="testimonial section-padding">
@@ -849,12 +694,12 @@
                 <h3 class="footer-title">Our Gallery</h3>
                 <div class="widget widget-gallery">
                     <ul class="magnific-gallery">
-                        <li><a href="#"><img src="assets/images/gallery/thum1.jpg" alt="instagram image"></a></li>
-                        <li><a href="#"><img src="assets/images/gallery/thum2.jpg" alt="instagram image"></a></li>
-                        <li><a href="#"><img src="assets/images/gallery/thum3.jpg" alt="instagram image"></a></li>
-                        <li><a href="#"><img src="assets/images/gallery/thum4.jpg" alt="instagram image"></a></li>
-                        <li><a href="#"><img src="assets/images/gallery/thum5.jpg" alt="instagram image"></a></li>
-                        <li><a href="#"><img src="assets/images/gallery/thum6.jpg" alt="instagram image"></a></li>
+                        <li><a href="#"><img src="{{asset('images/gallery/thum1.jpg')}}" alt="instagram image"></a></li>
+                        <li><a href="#"><img src="{{asset('images/gallery/thum2.jpg')}}" alt="instagram image"></a></li>
+                        <li><a href="#"><img src="{{asset('images/gallery/thum3.jpg')}}" alt="instagram image"></a></li>
+                        <li><a href="#"><img src="{{asset('images/gallery/thum4.jpg')}}" alt="instagram image"></a></li>
+                        <li><a href="#"><img src="{{asset('images/gallery/thum5.jpg')}}" alt="instagram image"></a></li>
+                        <li><a href="#"><img src="{{asset('images/gallery/thum6.jpg')}}" alt="instagram image"></a></li>
                     </ul>
                 </div>
             </div>
@@ -869,7 +714,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p>&copy; 2018 Material Studio, All right reserved. Designed with <i class="mdi mdi-heart"></i> by <a href="#">UIdeck</a></p>
+                    <p>&copy; 2018 The Owner<i class="mdi mdi-heart"></i>  <a href="#"></a></p>
                 </div>
             </div>
         </div>
