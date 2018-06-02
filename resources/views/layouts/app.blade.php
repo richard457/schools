@@ -31,16 +31,21 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-
-
     <!-- Color CSS Styles  -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/colors/indigo.css')}}" media="screen"/>
+
+
+    <!-- Icons -->
+    <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
 </head>
 <body>
 
 <div id="app">
-    <main class="container">
+    <main class="col-xl-12">
         @yield('content')
     </main>
 </div>
@@ -65,6 +70,14 @@
 <script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('js/jquery.slicknav.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
+
+
+<script src="{{asset('js/chart.min.js')}}"></script>
+<script src="{{asset('js/chart-data.js')}}"></script>
+<script src="{{asset('js/easypiechart.js')}}"></script>
+<script src="{{asset('js/easypiechart-data.js')}}"></script>
+<script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
