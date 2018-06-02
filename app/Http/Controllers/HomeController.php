@@ -120,4 +120,10 @@ class HomeController extends Controller
         Auth::logout();
         return redirect('/');
     }
+    public function upload(Request $request){
+
+        $path = $request->file('picture')->storePublicly('avatars');
+         Log::debug($path);
+//        return $path;
+    }
 }
