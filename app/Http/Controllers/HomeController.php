@@ -116,4 +116,8 @@ class HomeController extends Controller
         $a->save ();
         return Response::json(['status'=>200]);
     }
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/');
+    }
 }

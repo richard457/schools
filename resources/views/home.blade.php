@@ -52,7 +52,7 @@
             <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
                 <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
 
-                <a href="login.html" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
+                <a href="{{route('logout')}}" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
             </nav>
             <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
                 <header class="page-header row justify-center">
