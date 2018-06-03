@@ -22,33 +22,48 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param null $lang
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lang=null)
     {
-        $questions = Question::all();
-        $count = sizeof($questions);
-        $answers = Answer::all();
-        $rol = Auth::user()->role;
-        $marks =Question::whereright_answer(1)->get();
+        if($lang){
+            $questions = Question::wherelang($lang)->get();
+            $count = sizeof($questions);
+            $answers = Answer::all();
+            $rol = Auth::user()->role;
+            $marks =Question::whereright_answer(1)->wherelang($lang)->get();
+            return view('home')->with('questions',$questions)
+                ->with('count',$count)
+                ->with('role',$rol)
+                ->with('mark',sizeof ($marks)* 2)
+                ->with ('answers',$answers);
+        }else{
+            $questions = Question::all();
+            $count = sizeof($questions);
+            $answers = Answer::all();
+            $rol = Auth::user()->role;
+            $marks =Question::whereright_answer(1)->get();
 
-        return view('home')->with('questions',$questions)
-            ->with('count',$count)
-            ->with('role',$rol)
-            ->with('mark',sizeof ($marks)* 2)
-            ->with ('answers',$answers);
+            return view('home')->with('questions',$questions)
+                ->with('count',$count)
+                ->with('role',$rol)
+                ->with('mark',sizeof ($marks)* 2)
+                ->with ('answers',$answers);
+        }
+
     }
-    public function questions(){
+    public function questions($lang=null){
 
-        $questions = Question::wheremarked(0)->get();
+        $questions = Question::wheremarked(0)->wherelang($lang)->get();
         return Response::json($questions);
     }
     public function getAnswers(Request $request){
-        $answer = Answer::wherequestion_id($request->get('id'))->get();
+        $answer = Answer::wherequestion_id($request->get('id'))->wherelang($request->get('lang'))->get();
         return Response::json($answer);
     }
-    public function addAnswer($id){
-        $answer = Answer::wherequestion_id($id)->get();
+    public function addAnswer($id,$lang='kin'){
+        $answer = Answer::wherequestion_id($id)->wherelang($lang)->get();
 
         return view('add_answer')->with('q_id',$id)->with('answers',$answer);
     }
@@ -59,7 +74,9 @@ class HomeController extends Controller
         if($count == 10){
             $error_map[] = 'Ten Questions are the limit for one Test';
         }
-        if(!$request->has ('choice_one')){
+        if(!$request->has ('lang')){
+            $error_map[] = 'you need to have language param set';
+        }else if(!$request->has ('choice_one')){
             $error_map[] = 'choice one required';
         }else if(!$request->has ('choice_two')){
             $error_map[] = 'choice two required';
@@ -96,27 +113,28 @@ class HomeController extends Controller
         return redirect()->to('home');
     }
     //TODO to calculate point we need to have all answered option and match with the real right choice and count multipy it with 2 to get out of 20
-    public function saveAnswer($question_id,$answer_id){
+    public function saveAnswer($question_id,$answer_id,$lang='kin'){
         $is_answer_marque_as_right = Answer::find($answer_id)->first()->marked;
         $a =  Question::find($question_id);
         $a->marked = true;
+        $a->lang = $lang;
         $a->right_answer = $is_answer_marque_as_right;
         $a->save ();
         return redirect()->to('home');
     }
-    public function getMarks(){
-        $marks =Question::whereright_answer(1)->get();
+    public function getMarks($lang='kin'){
+        $marks =Question::whereright_answer(1)->wherelang($lang)->get();
         return Response::json(['mark'=> sizeof($marks) * 2]);
     }
     public function saveAnswerApi(Request $request){
         $is_answer_marque_as_right = Answer::find($request->get('answer_id'))->first()->marked;
-        $a =  Question::find($request->get('question_id'));
+        $a =  Question::find($request->get('question_id'))->wherelang($request->get('lang'));
         $a->marked = true;
         $a->right_answer = $is_answer_marque_as_right;
         $a->save ();
         return Response::json(['status'=>200]);
     }
-    public function logout(Request $request) {
+    public function logout() {
         Auth::logout();
         return redirect('/');
     }

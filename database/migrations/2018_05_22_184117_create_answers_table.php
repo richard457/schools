@@ -17,6 +17,7 @@ class CreateAnswersTable extends Migration
             $table->increments('id');
             $table->text('answer');
             $table->text('question_id');
+            $table->string('lang')->default('kin');
             $table->boolean('marked')->default(false);
             $table->timestamps();
         });
