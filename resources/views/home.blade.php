@@ -1,46 +1,49 @@
 @extends('layouts.app')
-
 @section('content')
-
-
     <div class="modal" id="myModal">
-
         <form method="POST" action="/add_question">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                @csrf
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Question</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <div class="modal-body">
-                    <input type="text" class="form-control mt-1" name="question" placeholder="question here">
-                    <span>Add Answer by y/n</span>
-                    <div class="row">
-                        <div class="col-md-5 mt-4">
-                            <input type="text" class="form-control mt-2" name="answer_one">
-                            <input type="text" class="form-control mt-2" name="answer_two">
-                            <input type="text" class="form-control mt-2" name="answer_three">
-                        </div>
-                        <div class="col-md-5">
-                            <span>Mark it as the right answer</span>
-                            <input type="text" class="form-control mt-2" name="choice_one" placeholder="no">
-                            <input type="text" class="form-control mt-2" name="choice_two" placeholder="no">
-                            <input type="text" class="form-control mt-2" name="choice_three" placeholder="no">
-
-                        </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    @csrf
+                    <div class="modal-header">
+                        <h4     class="modal-title">Add Question</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <button type="submit" class="btn btn-primary float-right mt-1">Add Question</button>
-                </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control mt-1" name="question" placeholder="question here">
+                        <span>Add Answer by y/n</span>
+                        <div class="row">
+                            <div class="col-md-5 mt-4">
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
+                                <input type="text"  class="form-control mt-2" name="answer_one">
+                                <input type="text" class="form-control mt-2" name="answer_two">
+                                <input type="text" class="form-control mt-2" name="answer_three">
 
+                            </div>
+                            <div class="col-md-5">
+                                <span>Mark it as the right answer</span>
+                                <input type="text" class="form-control mt-2" name="choice_one" placeholder="no">
+                                <input type="text" class="form-control mt-2" name="choice_two" placeholder="no">
+                                <input type="text" class="form-control mt-2" name="choice_three" placeholder="no">
+                            </div>
+                        </div>
+                        <div class="col-md-5 mt-4">
+                            <select name="lang">
+                                <option name="value">Kin</option>
+                                <option name="value">fr</option>
+                                <option name="value">eng</option>
+                            </select>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right mt-1">Add Question</button>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
             </div>
-        </div>
         </form>
     </div>
     </body>
@@ -78,7 +81,22 @@
                             <div class="col-md-12 col-lg-8">
 
                                 <div class="row">
+                                    <div class="row">
+                                        <form class="ml-1">
+                                            <input name="lang" value="kin" type="hidden">
+                                            <a class="btn btn-primary" href="/home?lang=kin" >Kinyarwanda</a>
+                                        </form>
+                                        <form class="ml-1">
+                                            <input name="lang" value="fr" type="hidden">
+                                            <a class="btn btn-primary" href="/home?lang=fr" >Francais</a>
+                                        </form>
+                                        <form class="ml-1">
+                                            <input name="lang" value="eng" type="hidden">
+                                            <a class="btn btn-primary" href="/home?lang=eng" >English</a>
+                                        </form>
+                                    </div>
                                     <div class="container">
+
                                         <h1 style="margin-left: 430px">{{$mark}}/ 20 Marks</h1>
                                     </div>
                                     @foreach($questions as $f)
@@ -112,8 +130,6 @@
                                             </div>
                                         @endif
                                     @endif
-
-
                                 </div>
                             </div>
 

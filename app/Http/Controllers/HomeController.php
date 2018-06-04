@@ -22,11 +22,15 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @param null $lang
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index($lang=null)
+    public function index(Request $request)
     {
+        $lang = $request->get('lang');
+        if(!isSet($lang)){
+           $lang = 'kin';
+        }
         if($lang){
             $questions = Question::wherelang($lang)->get();
             $count = sizeof($questions);
@@ -54,7 +58,6 @@ class HomeController extends Controller
 
     }
     public function questions($lang=null){
-
         $questions = Question::wheremarked(0)->wherelang($lang)->get();
         return Response::json($questions);
     }
@@ -64,11 +67,10 @@ class HomeController extends Controller
     }
     public function addAnswer($id,$lang='kin'){
         $answer = Answer::wherequestion_id($id)->wherelang($lang)->get();
-
         return view('add_answer')->with('q_id',$id)->with('answers',$answer);
     }
     public function addQuestion(Request $request){
-        $error_map =[];
+        $error_map = [];
         $questions = Question::all();
         $count = sizeof($questions);
         if($count == 10){
@@ -93,20 +95,24 @@ class HomeController extends Controller
             return Response::json($error_map);
         }
         //TODO validate in choice given in put are numbers and
-        $question = Question::create(['question'=>$request->get('question')]);
+        $question = Question::create(['question'=>$request->get('question'),'lang'=>$request->get('lang')]);
+
         $question_id = $question->id;
         Answer::create([
             'answer'=>$request->get('answer_one'),
+            'lang'=>$request->get('lang'),
             'question_id'=>$question_id ,
             'marked'=>$request->get('choice_one')
         ]);
         Answer::create([
             'answer'=>$request->get('answer_two'),
+            'lang'=>$request->get('lang'),
             'question_id'=>$question_id ,
             'marked'=>$request->get('choice_two')
         ]);
         Answer::create([
             'answer'=>$request->get('answer_three'),
+            'lang'=>$request->get('lang'),
             'question_id'=>$question_id ,
             'marked'=>$request->get('choice_three')
         ]);
