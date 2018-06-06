@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DefaultQuestion;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
@@ -28,6 +29,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $lang = $request->get('lang');
+        $default_questions = DefaultQuestion::all();
         if(!isSet($lang)){
            $lang = 'kin';
         }
@@ -40,6 +42,7 @@ class HomeController extends Controller
             return view('home')->with('questions',$questions)
                 ->with('count',$count)
                 ->with('role',$rol)
+                ->with('default_questions',$default_questions)
                 ->with('mark',sizeof ($marks)* 2)
                 ->with ('answers',$answers);
         }else{
@@ -52,6 +55,7 @@ class HomeController extends Controller
             return view('home')->with('questions',$questions)
                 ->with('count',$count)
                 ->with('role',$rol)
+                ->with('default_questions',$default_questions)
                 ->with('mark',sizeof ($marks)* 2)
                 ->with ('answers',$answers);
         }

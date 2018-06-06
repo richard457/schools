@@ -6,16 +6,23 @@
                 <div class="modal-content">
                     @csrf
                     <div class="modal-header">
-                        <h4     class="modal-title">Add Question</h4>
+                        <h4 class="modal-title">Add Question</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <input type="text" class="form-control mt-1" name="question" placeholder="question here">
+
+                        <select name="question">
+                            <option value="One   kkkk"></option>
+                            {{--<input type="text" class="form-control mt-1"  placeholder="question here">--}}
+                            @foreach($default_questions as $q)
+                                <option value="{{$q->question}}">{{$q->question}}</option>
+                            @endforeach
+                        </select>
                         <span>Add Answer by y/n</span>
                         <div class="row">
                             <div class="col-md-5 mt-4">
 
-                                <input type="text"  class="form-control mt-2" name="answer_one">
+                                <input type="text" class="form-control mt-2" name="answer_one">
                                 <input type="text" class="form-control mt-2" name="answer_two">
                                 <input type="text" class="form-control mt-2" name="answer_three">
 
@@ -59,20 +66,10 @@
             </nav>
             <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
                 <header class="page-header row justify-center">
-                    <div class="col-md-6 col-lg-8" >
+                    <div class="col-md-6 col-lg-8">
 
                     </div>
-                    {{--<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                            {{--<img src="{{asset('images/profile-pic.jpg')}}" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">--}}
-                            {{--<div class="username mt-1">--}}
-                                {{--<h4 class="mb-1">Username</h4>--}}
-                                {{--<h6 class="text-muted">Super Admin</h6>--}}
-                            {{--</div>--}}
-                        {{--</a>--}}
-                        {{--<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>--}}
-                            {{--<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>--}}
-                            {{--<a class="dropdown-item" href="#"><em class="fa fa-power-off mr-1"></em> Logout</a></div>--}}
-                    {{--</div>--}}
+
                     <div class="clear"></div>
                 </header>
                 <section class="row">
@@ -84,15 +81,15 @@
                                     <div class="row">
                                         <form class="ml-1">
                                             <input name="lang" value="kin" type="hidden">
-                                            <a class="btn btn-primary" href="/home?lang=kin" >Kinyarwanda</a>
+                                            <a class="btn btn-primary" href="/home?lang=kin">Kinyarwanda</a>
                                         </form>
                                         <form class="ml-1">
                                             <input name="lang" value="fr" type="hidden">
-                                            <a class="btn btn-primary" href="/home?lang=fr" >Francais</a>
+                                            <a class="btn btn-primary" href="/home?lang=fr">Francais</a>
                                         </form>
                                         <form class="ml-1">
                                             <input name="lang" value="eng" type="hidden">
-                                            <a class="btn btn-primary" href="/home?lang=eng" >English</a>
+                                            <a class="btn btn-primary" href="/home?lang=eng">English</a>
                                         </form>
                                     </div>
                                     <div class="container">
@@ -104,10 +101,11 @@
                                         @if($f->marked != 1)
                                             <div class="card col-md-5 ml-1 mt-2" style="width: 18rem;">
                                                 <div class="card-body">
-                                                    <h5 class="card-title"><span class="badge badge-light">{{$f->id}}</span></h5>
+                                                    <h5 class="card-title"><span
+                                                                class="badge badge-light">{{$f->id}}</span></h5>
                                                     <p class="card-text">{{$f->question}}</p>
 
-                                                    <a href="add_answer/{{$f->id}}" class="btn btn-primary" >Answer</a>
+                                                    <a href="add_answer/{{$f->id}}" class="btn btn-primary">Answer</a>
                                                 </div>
                                             </div>
 
@@ -115,17 +113,20 @@
                                             <div class="card col-md-5 ml-1 mt-2" style="width: 18rem;">
                                                 <div class="card-body">
                                                     <p>No Question sir</p>
-                                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Test</a>
+                                                    <a href="#" class="btn btn-primary" data-toggle="modal"
+                                                       data-target="#myModal">Add Test</a>
                                                 </div>
                                             </div>
                                         @endif
                                     @endforeach
+
                                     @if($count < 10 || $count ==0)
                                         @if($role == 'super')
                                             <div class="card col-md-5 ml-1 mt-2" style="width: 18rem;">
                                                 <div class="card-body">
                                                     <p>No Question sir</p>
-                                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Test</a>
+                                                    <a href="#" class="btn btn-primary" data-toggle="modal"
+                                                       data-target="#myModal">Add Test</a>
                                                 </div>
                                             </div>
                                         @endif

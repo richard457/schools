@@ -29,14 +29,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Contact Us
-                        </a>
-                        {{--<div class="dropdown-menu">--}}
-                            {{--<a class="dropdown-item" href="contact-us.html">Contact Us 1</a>--}}
-                            {{--<a class="dropdown-item" href="contact-us2.html">Contact Us 2</a>--}}
-                        {{--</div>--}}
-                    </li>
+
                 </ul>
                 <!-- Search Box Start -->
                 <div class="search-icon">
@@ -160,224 +153,10 @@
 <!-- About Section -->
 <section class="Material-about-section section-padding mt-5">
     <div class="container">
-        <div class="row">
-            <!-- Single About -->
-            <div class="col-md-6 col-lg-3 col-xl-3 wow animated fadeInUp" data-wow-delay=".2s">
-                <div class="about-single">
-                    <i class="material-icons mdi mdi-layers"></i>
-                    <h2 class="subtitle">Ikizami</h2>
-                    <p>Excepteur sint occaecat cupidatat non proidt, sunt in culpa qui.</p>
-                </div>
-            </div>
-            <!-- Single About -->
-            <div class="col-md-6 col-lg-3 col-xl-3 wow animated fadeInUp" data-wow-delay=".3s">
-                <div class="about-single">
-                    <i class="material-icons mdi mdi-cards-playing-outline"></i>
-                    <h2 class="subtitle">Amabwiriza</h2>
-                    <p>Excepteur sint occaecat cupidatat non proidt, sunt in culpa qui.</p>
-                </div>
-            </div>
-            <!-- Single About -->
-            <div class="col-md-6 col-lg-3 col-xl-3 wow animated fadeInUp" data-wow-delay=".4s">
-                <div class="about-single">
-                    <i class="material-icons mdi mdi-alarm-check"></i>
-                    <h2 class="subtitle">Fast and Clean</h2>
-                    <p>Excepteur sint occaecat cupidatat non proidt, sunt in culpa qui.</p>
-                </div>
-            </div>
-            <!-- Single About -->
-            <div class="col-md-6 col-lg-3 col-xl-3 wow animated fadeInUp" data-wow-delay=".5s">
-                <div class="about-single">
-                    <i class="material-icons mdi mdi-responsive"></i>
-                    <h2 class="subtitle">Fully Responsive</h2>
-                    <p>Excepteur sint occaecat cupidatat non proidt, sunt in culpa qui.</p>
-                </div>
-            </div>
-        </div>
+        <h1 style="margin-left: 295px;">Welcome To Rwanda National Police</h1>
+        <img style="margin-left: 515px;width: 120px; height: 120px" src="{{asset('images/police.jpg')}}">
     </div>
 </section>
-<!-- About Section End -->
-
-<!-- Welcome Section Start -->
-<section class="welcome-section section-padding section-dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xs-12">
-                <div class="Material-tab">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#business" role="tab"><i class="mdi mdi-account-multiple-outline"></i></br>Business</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#startup" role="tab"><i class="mdi mdi-flash-outline"></i></br>Startup</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#agency" role="tab"><i class="mdi mdi-all-inclusive"></i></br>Agency</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#saas" role="tab"><i class="mdi mdi-cloud-outline"></i></br>SaaS</a>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="business" role="tabpanel">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nesciunt dolores quibusdam, officia sed mollitia, illo, quis, vel veniam officiis qui repellendus. Perferendis et, veritatis enim voluptatem libero consequuntur eveniet alias nesciunt fugit doloremque tempora id Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, aut ut totam quam inventore suscipit ullam nostrum quisquam corrupti nesciunt voluptas necessitatibus, ab porro cupiditate optio mollitia, expedita, omnis? Quasi.</p>
-                        </div>
-                        <div class="tab-pane fade" id="startup" role="tabpanel" >
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nesciunt dolores quibusdam, officia sed mollitia, illo, quis, vel veniam officiis qui repellendus. Perferendis et, veritatis enim voluptatem libero consequuntur eveniet alias nesciunt fugit doloremque tempora id Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, aut ut totam quam inventore suscipit ullam nostrum quisquam corrupti nesciunt voluptas necessitatibus, ab porro cupiditate optio mollitia, expedita, omnis? Quasi.</p>
-                        </div>
-                        <div  class="tab-pane fade" id="agency" role="tabpanel">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nesciunt dolores quibusdam, officia sed mollitia, illo, quis, vel veniam officiis qui repellendus. Perferendis et, veritatis enim voluptatem libero consequuntur eveniet alias nesciunt fugit doloremque tempora id Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, aut ut totam quam inventore suscipit ullam nostrum quisquam corrupti nesciunt voluptas necessitatibus, ab porro cupiditate optio mollitia, expedita, omnis? Quasi.</p>
-                        </div>
-                        <div class="tab-pane fade" id="saas" role="tabpanel">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nesciunt dolores quibusdam, officia sed mollitia, illo, quis, vel veniam officiis qui repellendus. Perferendis et, veritatis enim voluptatem libero consequuntur eveniet alias nesciunt fugit doloremque tempora id Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, aut ut totam quam inventore suscipit ullam nostrum quisquam corrupti nesciunt voluptas necessitatibus, ab porro cupiditate optio mollitia, expedita, omnis? Quasi.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- Welcome Section End -->
-
-<!-- Services Section -->
-<section class="Material-service-section section-padding">
-    <div class="container">
-        <div class="row">
-            <!-- Section Titile -->
-            <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1 class="section-title">Why Choose</h1>
-            </div>
-        </div>
-        <!-- Services Widget Section -->
-        <div class="row">
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".3s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-arrange-send-backward"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Refreshing Design</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".4s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-code-tags-check"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Solid Bootstrap 4</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".5s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-grid"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">100+ Components</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".6s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-update"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Regular Updates</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".7s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-speedometer"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Speed Optimized</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".8s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-shape-plus"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Fully Customizable</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Services Section End -->
-
-
-
-<!-- work-counter area -->
-<section class="work-counter-section section-padding">
-    <div class="container">
-        <div class="row">
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".2s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-check-all"></i></div>
-                    <div class="timer">347</div>
-                    <p>Projects Done</p>
-                </div>
-            </div>
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".3s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-clock"></i></div>
-                    <div class="timer">8896</div>
-                    <p>Working Hours</p>
-                </div>
-            </div>
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".4s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-account-multiple-outline"></i></div>
-                    <div class="timer">35</div>
-                    <p>Team Members</p>
-                </div>
-            </div>
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".5s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-sticker-emoji"></i></div>
-                    <div class="timer">233</div>
-                    <p>Happy Clients</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- work-counter area end -->
-
-
 <!-- Start Testimonial Section  -->
 <div class="testimonial section-padding">
     <div class="container">
@@ -478,91 +257,7 @@
 <!-- End Client Section -->
 
 <!-- Our BLog Section -->
-<section class="Material-blog-section section-padding">
-    <div class="container">
-        <div class="row">
-            <!-- Section Titile -->
-            <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1 class="section-title">From The Blog</h1>
-            </div>
-        </div>
 
-        <div class="row">
-            <!-- Single Article -->
-            <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp" data-wow-delay=".3s">
-                <article class="single-blog-post">
-                    <!-- Featured Image -->
-                    <div class="featured-image">
-                        <a href="#">
-                            <img src="assets/images/blog/featured1.jpg" alt="">
-                        </a>
-                    </div>
-                    <!-- Post Meta -->
-                    <div class="post-meta">
-                        <!-- Title -->
-                        <a href="blog-single.html"><h2 class="subtitle">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                    </div>
-                    <div class="meta-tags">
-                        <span class="comments"><a href="#"><i class="mdi mdi-comment-outline"></i> 24 Comments</a></span>
-                        <!-- Read More -->
-                        <a class="btn btn-round btn-fab" href="blog-single.html"><i class="material-icons mdi mdi-arrow-right"></i><div class="ripple-container"></div></a>
-                    </div>
-                </article>
-            </div>
-            <!-- Single Article -->
-            <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp" data-wow-delay=".4s">
-                <article class="single-blog-post">
-                    <!-- Featured Image -->
-                    <div class="featured-image">
-                        <a href="#">
-                            <img src="assets/images/blog/featured2.jpg" alt="">
-                        </a>
-                    </div>
-                    <!-- Post Meta -->
-                    <div class="post-meta">
-                        <!-- Title -->
-                        <a href="blog-single.html"><h2 class="subtitle">10 Tips to Validate Your Next Startup Idea</h2></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                    </div>
-                    <div class="meta-tags">
-                        <span class="comments"><a href="#"><i class="mdi mdi-comment-outline"></i> 24 Comments</a></span>
-                        <!-- Read More -->
-                        <a class="btn btn-round btn-fab" href="blog-single.html"><i class="material-icons mdi mdi-arrow-right"></i><div class="ripple-container"></div></a>
-                    </div>
-                </article>
-            </div>
-            <!-- Single Article -->
-            <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp" data-wow-delay=".5s">
-                <article class="single-blog-post">
-                    <!-- Featured Image -->
-                    <div class="featured-image">
-                        <a href="#">
-                            <img src="assets/images/blog/featured3.jpg" alt="">
-                        </a>
-                    </div>
-                    <!-- Post Meta -->
-                    <div class="post-meta">
-                        <!-- Title -->
-                        <a href="blog-single.html"><h2 class="subtitle">How to Create Successful Website for Your Agency</h2></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                    </div>
-                    <div class="meta-tags">
-                        <span class="comments"><a href="#"><i class="mdi mdi-comment-outline"></i> 24 Comments</a></span>
-                        <!-- Read More -->
-                        <a class="btn btn-round btn-fab" href="blog-single.html"><i class="material-icons mdi mdi-arrow-right"></i><div class="ripple-container"></div></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-        <div class="row mt-5 wow animated fadeInUp" data-wow-delay=".6s">
-            <!-- Button -->
-            <div class="col-md-12 text-center">
-                <a href="blog.html" class="animated4 btn btn-common" data-ripple-color="#000"><i class="material-icons mdi mdi-library-books"></i> Explore More on Blog<div class="ripple-container"></div></a>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- Our BLog Section End -->
 
 <!-- Contact Us Section -->
@@ -681,7 +376,7 @@
                     <li><a href="#">Brands</a></li>
                     <li><a href="portfolio-index.html">Portfolio</a></li>
                     <li><a href="#">Support</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    {{--<li><a href="contact.html">Contact Us</a></li>--}}
                     <li><a href="#">Site Map</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
