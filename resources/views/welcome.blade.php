@@ -151,10 +151,212 @@
 </header>
 <!-- Header End -->
 <!-- About Section -->
-<section class="Material-about-section section-padding mt-5">
+
+<!-- About Section End -->
+
+<section class="gallery-block cards-gallery">
     <div class="container">
-        <h1 style="margin-left: 295px;">Welcome To Rwanda National Police</h1>
-        <img style="margin-left: 515px;width: 120px; height: 120px" src="{{asset('images/police.jpg')}}">
+        <div class="heading">
+            <h2>Explore The beauty of Rwanda</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="#">
+                        <img src="{{asset('img/image1.jpg')}}" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h6><a href="#">Lorem Ipsum</a></h6>
+                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="#">
+                        <img src="{{asset('img/image2.jpg')}}" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h6><a href="#">Lorem Ipsum</a></h6>
+                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="#">
+                        <img src="{{asset('img/image3.jpg')}}" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h6><a href="#">Lorem Ipsum</a></h6>
+                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="#">
+                        <img src="{{asset('img/image4.jpg')}}" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h6><a href="#">Lorem Ipsum</a></h6>
+                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="{{asset('img/image5.jpg')}}">
+                        <img src="{{asset('img/image5.jpg')}}" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h6><a href="#">Lorem Ipsum</a></h6>
+                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                    <a class="lightbox" href="../img/image6.jpg">
+                        <img src="{{asset('img/image6.jpg')}}" alt="Card Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h6><a href="#">Lorem Ipsum</a></h6>
+                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="Material-service-section section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Titile -->
+            <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
+                <h1 class="section-title">Why Choose</h1>
+            </div>
+        </div>
+        <!-- Services Widget Section -->
+        <div class="row">
+            <!-- Service Widgets -->
+            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".3s">
+                <div class="media">
+                    <div class="media-left">
+                        <i class="material-icons pulse-shrink mdi mdi-arrange-send-backward"></i>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="subtitle"><a href="#">Refreshing Design</a></h2>
+                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Widgets -->
+            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".4s">
+                <div class="media">
+                    <div class="media-left">
+                        <i class="material-icons pulse-shrink mdi mdi-code-tags-check"></i>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="subtitle"><a href="#">Solid Bootstrap 4</a></h2>
+                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Widgets -->
+            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".5s">
+                <div class="media">
+                    <div class="media-left">
+                        <i class="material-icons pulse-shrink mdi mdi-grid"></i>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="subtitle"><a href="#">100+ Components</a></h2>
+                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Widgets -->
+            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".6s">
+                <div class="media">
+                    <div class="media-left">
+                        <i class="material-icons pulse-shrink mdi mdi-update"></i>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="subtitle"><a href="#">Regular Updates</a></h2>
+                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Widgets -->
+            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".7s">
+                <div class="media">
+                    <div class="media-left">
+                        <i class="material-icons pulse-shrink mdi mdi-speedometer"></i>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="subtitle"><a href="#">Speed Optimized</a></h2>
+                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Widgets -->
+            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".8s">
+                <div class="media">
+                    <div class="media-left">
+                        <i class="material-icons pulse-shrink mdi mdi-shape-plus"></i>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="subtitle"><a href="#">Fully Customizable</a></h2>
+                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section End -->
+
+
+
+<!-- work-counter area -->
+<section class="work-counter-section section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Single Counter -->
+            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".2s">
+                <div class="counter">
+                    <div class="icon"><i class="material-icons mdi mdi-check-all"></i></div>
+                    <div class="timer">347</div>
+                    <p>Projects Done</p>
+                </div>
+            </div>
+            <!-- Single Counter -->
+            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".3s">
+                <div class="counter">
+                    <div class="icon"><i class="material-icons mdi mdi-clock"></i></div>
+                    <div class="timer">8896</div>
+                    <p>Working Hours</p>
+                </div>
+            </div>
+            <!-- Single Counter -->
+            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".4s">
+                <div class="counter">
+                    <div class="icon"><i class="material-icons mdi mdi-account-multiple-outline"></i></div>
+                    <div class="timer">35</div>
+                    <p>Team Members</p>
+                </div>
+            </div>
+            <!-- Single Counter -->
+            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".5s">
+                <div class="counter">
+                    <div class="icon"><i class="material-icons mdi mdi-sticker-emoji"></i></div>
+                    <div class="timer">233</div>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Start Testimonial Section  -->
@@ -256,9 +458,6 @@
 </div>
 <!-- End Client Section -->
 
-<!-- Our BLog Section -->
-
-<!-- Our BLog Section End -->
 
 <!-- Contact Us Section -->
 <section class="Material-contact-section section-padding section-dark">

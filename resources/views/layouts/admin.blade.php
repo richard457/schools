@@ -16,7 +16,6 @@
     <!-- Meterial Icon CSS -->
     <link rel="stylesheet" href="{{asset('css/materialdesignicons.min.css')}}">
     <!-- Material CSS -->
-    <link rel="stylesheet" href="{{asset('css/material.min.css')}}">
     <!-- Ripples CSS -->
     <link rel="stylesheet" href="{{asset('css/ripples.min.css')}}">
     <!-- Owl Carousel CSS -->
