@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('auth.reg')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -62,7 +63,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4" style="margin-left: 285px;">
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
