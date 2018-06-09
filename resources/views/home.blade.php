@@ -61,8 +61,7 @@
         <div class="row">
             <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
                 <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
-
-                <a href="{{route('logout')}}" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
+                <a href="{{route('logout')}}" class="logout-button">{{$log_out}}</a>
             </nav>
             <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
                 <header class="page-header row justify-center">
@@ -112,7 +111,7 @@
                                         @elseif($count <10)
                                             <div class="card col-md-5 ml-1 mt-2" style="width: 18rem;">
                                                 <div class="card-body">
-                                                    <p>No Question sir</p>
+                                                    <p>{{$no_question}}</p>
                                                     <a href="#" class="btn btn-primary" data-toggle="modal"
                                                        data-target="#myModal">Add Test</a>
                                                 </div>
@@ -124,9 +123,9 @@
                                         @if($role == 'super')
                                             <div class="card col-md-5 ml-1 mt-2" style="width: 18rem;">
                                                 <div class="card-body">
-                                                    <p>No Question sir</p>
+                                                    <p>{{$no_question}}</p>
                                                     <a href="#" class="btn btn-primary" data-toggle="modal"
-                                                       data-target="#myModal">Add Test</a>
+                                                       data-target="#myModal">{{$add_test}}</a>
                                                 </div>
                                             </div>
                                         @endif

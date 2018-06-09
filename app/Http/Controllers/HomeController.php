@@ -41,6 +41,9 @@ class HomeController extends Controller
     {
 
         $answer = 'subiza';
+        $add_test = 'Ongeramo';
+        $log_out = 'Sohoka';
+        $no_question = 'Nta bibazo ongeramo';
         $lang = $request->get('lang');
         $default_questions = DefaultQuestion::all();
         if(!isSet($lang)){
@@ -48,10 +51,19 @@ class HomeController extends Controller
         }
         if($lang == 'king'){
             $answer = 'subiza';
+            $add_test = 'Ongeramo';
+            $log_out = 'Sohoka';
+            $no_question = 'Nta bibazo ongeramo';
         }else if($lang == 'fr'){
             $answer = 'Repondre';
+            $add_test = 'Ajouter l\'exam';
+            $log_out = 'deconnexion';
+            $no_question = 'Ajouter plus';
         }else if($lang == 'eng'){
             $answer = 'Respond';
+            $add_test = 'Add Test';
+            $log_out = 'Log out';
+            $no_question = 'No Question add more';
         }
         if($lang){
             $questions = Question::wherelang($lang)->get();
@@ -63,6 +75,9 @@ class HomeController extends Controller
                 ->with('count',$count)
                 ->with('role',$rol)
                 ->with('answer',$answer)
+                ->with('log_out',$log_out)
+                ->with('add_test',$add_test)
+                ->with('no_question',$no_question)
                 ->with('default_questions',$default_questions)
                 ->with('mark',sizeof ($marks)* 2)
                 ->with ('answers',$answers);
@@ -77,6 +92,9 @@ class HomeController extends Controller
                 ->with('count',$count)
                 ->with('role',$rol)
                 ->with('answer',$answer)
+                ->with('log_out',$log_out)
+                ->with('no_question',$no_question)
+                ->with('add_test',$add_test)
                 ->with('default_questions',$default_questions)
                 ->with('mark',sizeof ($marks)* 2)
                 ->with ('answers',$answers);
