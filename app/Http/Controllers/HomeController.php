@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
 use Illuminate\Support\Facades\Auth;
+
 use Response;
 use Log;
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -17,7 +19,16 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
+    }
+    public function loginApi(Request $request){
+        $user = User::whereemail($request->get('email'))->first();
+        if($user){
+            return Response::json(['email'=>$user->email]);
+        }
+        else{
+            return Response::json(['email'=>'null']);
+        }
     }
 
     /**
@@ -28,10 +39,19 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+
+        $answer = 'subiza';
         $lang = $request->get('lang');
         $default_questions = DefaultQuestion::all();
         if(!isSet($lang)){
            $lang = 'kin';
+        }
+        if($lang == 'king'){
+            $answer = 'subiza';
+        }else if($lang == 'fr'){
+            $answer = 'Repondre';
+        }else if($lang == 'eng'){
+            $answer = 'Respond';
         }
         if($lang){
             $questions = Question::wherelang($lang)->get();
@@ -42,6 +62,7 @@ class HomeController extends Controller
             return view('home')->with('questions',$questions)
                 ->with('count',$count)
                 ->with('role',$rol)
+                ->with('answer',$answer)
                 ->with('default_questions',$default_questions)
                 ->with('mark',sizeof ($marks)* 2)
                 ->with ('answers',$answers);
@@ -55,17 +76,19 @@ class HomeController extends Controller
             return view('home')->with('questions',$questions)
                 ->with('count',$count)
                 ->with('role',$rol)
+                ->with('answer',$answer)
                 ->with('default_questions',$default_questions)
                 ->with('mark',sizeof ($marks)* 2)
                 ->with ('answers',$answers);
         }
 
     }
-    public function questions($lang=null){
-        $questions = Question::wheremarked(0)->wherelang($lang)->get();
+    public function questions(Request $request){
+        $questions = Question::wheremarked(0)->wherelang($request->get('lang'))->get();
         return Response::json($questions);
     }
     public function getAnswers(Request $request){
+
         $answer = Answer::wherequestion_id($request->get('id'))->wherelang($request->get('lang'))->get();
         return Response::json($answer);
     }

@@ -105,7 +105,7 @@
                                                                 class="badge badge-light">{{$f->id}}</span></h5>
                                                     <p class="card-text">{{$f->question}}</p>
 
-                                                    <a href="add_answer/{{$f->id}}" class="btn btn-primary">Answer</a>
+                                                    <a href="add_answer/{{$f->id}}" class="btn btn-primary">{{$answer}}</a>
                                                 </div>
                                             </div>
 
