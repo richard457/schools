@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('description')->default('null');
             $table->decimal('long')->default(0);
             $table->decimal('lat')->default(0);
+            $table->string('image_type')->default('tour');
             $table->timestamps();
         });
     }

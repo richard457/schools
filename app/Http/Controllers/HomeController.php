@@ -115,10 +115,22 @@ class HomeController extends Controller
         Auth::logout();
         return redirect('/');
     }
+    public function saveDetails(Request $request){
+        $post = Post::find($request->get('id'))->first();
+        $post->image_type = $request->get('image_type');
+        $post->description = $request->get('description');
+        $post->lat = $request->get('latitude');
+        $post->long = $request->get('longitude');
+        $post->save();
+        return redirect()->to('home');
+    }
+    public function showAddDetail($id){
+        return view('details')->with('id', $id);
+    }
     public function upload(Request $request){
 
         $path = $request->file('picture')->storePublicly('avatars');
-        $pretty_url = str_replace('localhost', 'localhost:8000', Storage::url($path));
+//        $pretty_url = str_replace('localhost', 'localhost:8000', Storage::url($path));
          Post::create([
             'image_url'=>Storage::url($path)
          ]);

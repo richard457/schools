@@ -21,13 +21,25 @@
 
     <div class="modal" id="addInfoModal">
 
-        <form method="POST" action="/upload" enctype="multipart/form-data">
+        <form method="POST" action="/saveDetails" >
             <div class="modal-dialog">
                 <div class="modal-content">
 
                     @csrf
-
-                    <button class="btn btn-primary rounded-0" type="submit">Upload</button>
+                    <div>
+                        <select name="image_type" style="width: 450px;margin-left: 10px;">
+                            <option>Hotel</option>
+                            <option>Visit Area</option>
+                        </select>
+                    </div>
+                    <div>
+                        <textarea name="description" type="text" style="min-width: 400px;margin-left: 40px;"></textarea>
+                    </div>
+                    <div style="margin-left: 45px">
+                        <input type="text" placeholder="latitude" name="latitude">
+                        <input type="text" placeholder="longitude" name="longitude">
+                    </div><br>
+                    <button class="btn btn-primary rounded-0" type="submit">Save Details</button>
                 </div>
             </div>
         </form>
@@ -63,11 +75,12 @@
                     @foreach($posts as $post)
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-0 transform-on-hover">
-                            <a class="lightbox" data-toggle="modal" data-target="#addInfoModal">
+                            <a class="lightbox"   href="add_detail/{{$post->id}}">
                                 <img src="{{$post->image_url}}" alt="Card Image" class="card-img-top">
                             </a>
                             <div class="card-body">
-                                <h6><a data-toggle="modal" data-target="#addInfoModal">Lorem Ipsum</a></h6>
+                                <!--data-target="#addInfoModal"-->
+                                <h6><a data-toggle="modal" href="add_detail/{{$post->id}}">{{$post->description}}</a></h6>
                                 <p class="text-muted card-text">{{$post->description}}</p>
                             </div>
                         </div>

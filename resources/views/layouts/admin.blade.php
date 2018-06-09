@@ -13,23 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <!-- Meterial Icon CSS -->
-    <link rel="stylesheet" href="{{asset('css/materialdesignicons.min.css')}}">
-    <!-- Material CSS -->
-    <!-- Ripples CSS -->
-    <link rel="stylesheet" href="{{asset('css/ripples.min.css')}}">
-    <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
-    <!-- Slicknav CSS -->
-    <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+
     <!-- Color CSS Styles  -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/colors/indigo.css')}}" media="screen"/>
 

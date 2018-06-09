@@ -24,17 +24,7 @@ Route::get('get_user', 'User@getUser')->name('home');
 Route::get('get_accounts', 'AccountController@getAccount')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
-=======
-Route::get('questions', 'HomeController@questions');
-Route::get('question', 'HomeController@getAnswers');
-
-Route::post('add_question', 'HomeController@addQuestion');
-Route::get('add_answer/{id}', 'HomeController@addAnswer');
-
-Route::get('save_answer/{id}/{a_id}', 'HomeController@saveAnswer');
-Route::get('save_answers', 'HomeController@saveAnswerApi');
-Route::get('get_marks', 'HomeController@getMarks');
->>>>>>> cbfde08a0ec971d44f63ddda7a22d08c575d5b1b
 Route::post('upload', 'HomeController@upload');
+Route::post('saveDetails', 'HomeController@saveDetails');
+Route::get('add_detail/{id}', 'HomeController@showAddDetail');
 
