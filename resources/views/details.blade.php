@@ -7,7 +7,7 @@
             <div>
                 <select name="image_type" style="width: 450px;margin-left: 10px;">
                     <option>Hotel</option>
-                    <option>Visit Area</option>
+                    <option>tour</option>
                 </select>
             </div>
             <div>

@@ -27,4 +27,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('upload', 'HomeController@upload');
 Route::post('saveDetails', 'HomeController@saveDetails');
 Route::get('add_detail/{id}', 'HomeController@showAddDetail');
+Route::get('get_images', 'HomeController@getImages');
 
