@@ -83,6 +83,7 @@
                                 <h6><a data-toggle="modal" href="add_detail/{{$post->id}}">{{$post->description}}</a></h6>
                                 <p class="text-muted card-text">{{$post->description}}</p>
                             </div>
+                            <a  class="btn btn-primary remove-button bg-white" href="remove_this/{{$post->id}}">Remove</a>
                         </div>
                     </div>
                     @endforeach

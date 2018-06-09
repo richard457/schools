@@ -49,6 +49,10 @@ class HomeController extends Controller
         $posts = Post::whereimage_type($request->get('image_type'))->get();
         return Response::json($posts);
     }
+    public function removeImage($id){
+        Post::find($id)->delete();
+        return redirect()->to('home');
+    }
     public function showAddDetail($id){
         return view('details')->with('id', $id);
     }

@@ -1,7 +1,6 @@
 <form method="POST" action="/saveDetails" >
     <div class="modal-dialog">
         <div class="modal-content">
-
             <input type="hidden" name="id" value="{{$id}}">
             @csrf
             <div>

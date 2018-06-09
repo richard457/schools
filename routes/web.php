@@ -28,4 +28,5 @@ Route::post('upload', 'HomeController@upload');
 Route::post('saveDetails', 'HomeController@saveDetails');
 Route::get('add_detail/{id}', 'HomeController@showAddDetail');
 Route::get('get_images', 'HomeController@getImages');
+Route::get('remove_this/{id}', 'HomeController@removeImage');
 

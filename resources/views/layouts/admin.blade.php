@@ -25,7 +25,14 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
     <link href="{{asset('css/card.gallery.css')}}" rel="stylesheet">
-
+    <style>
+        .remove-button{
+            display: none;
+        }
+        div:hover + .remove-button, .remove-button:hover {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 
