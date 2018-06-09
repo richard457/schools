@@ -29,14 +29,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Contact Us
-                        </a>
-                        {{--<div class="dropdown-menu">--}}
-                            {{--<a class="dropdown-item" href="contact-us.html">Contact Us 1</a>--}}
-                            {{--<a class="dropdown-item" href="contact-us2.html">Contact Us 2</a>--}}
-                        {{--</div>--}}
-                    </li>
+
                 </ul>
                 <!-- Search Box Start -->
                 <div class="search-icon">
@@ -167,65 +160,13 @@
             <h2>Explore The beauty of Rwanda</h2>
         </div>
         <div class="row">
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 transform-on-hover">
-                    <a class="lightbox" href="#">
-                        <img src="{{asset('img/image1.jpg')}}" alt="Card Image" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <h6><a href="#">Lorem Ipsum</a></h6>
-                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 transform-on-hover">
-                    <a class="lightbox" href="#">
-                        <img src="{{asset('img/image2.jpg')}}" alt="Card Image" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <h6><a href="#">Lorem Ipsum</a></h6>
-                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 transform-on-hover">
-                    <a class="lightbox" href="#">
-                        <img src="{{asset('img/image3.jpg')}}" alt="Card Image" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <h6><a href="#">Lorem Ipsum</a></h6>
-                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 transform-on-hover">
-                    <a class="lightbox" href="#">
-                        <img src="{{asset('img/image4.jpg')}}" alt="Card Image" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <h6><a href="#">Lorem Ipsum</a></h6>
-                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 transform-on-hover">
-                    <a class="lightbox" href="{{asset('img/image5.jpg')}}">
-                        <img src="{{asset('img/image5.jpg')}}" alt="Card Image" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <h6><a href="#">Lorem Ipsum</a></h6>
-                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
-                    </div>
-                </div>
-            </div>
+            
+          
+           @foreach($posts as $post)
             <div class="col-md-6 col-lg-4">
                 <div class="card border-0 transform-on-hover">
                     <a class="lightbox" href="../img/image6.jpg">
-                        <img src="{{asset('img/image6.jpg')}}" alt="Card Image" class="card-img-top">
+                        <img src="{{asset($post->image_url)}}" alt="Card Image" class="card-img-top">
                     </a>
                     <div class="card-body">
                         <h6><a href="#">Lorem Ipsum</a></h6>
@@ -233,6 +174,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -366,9 +308,6 @@
         </div>
     </div>
 </section>
-<!-- work-counter area end -->
-
-
 <!-- Start Testimonial Section  -->
 <div class="testimonial section-padding">
     <div class="container">
@@ -467,7 +406,6 @@
     </div>
 </div>
 <!-- End Client Section -->
-
 
 
 <!-- Contact Us Section -->
@@ -586,7 +524,7 @@
                     <li><a href="#">Brands</a></li>
                     <li><a href="portfolio-index.html">Portfolio</a></li>
                     <li><a href="#">Support</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    {{--<li><a href="contact.html">Contact Us</a></li>--}}
                     <li><a href="#">Site Map</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>

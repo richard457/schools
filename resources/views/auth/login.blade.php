@@ -103,7 +103,7 @@
     }
 
     body {
-        background: #76b852; /* fallback for old browsers */
+        background: #dcdde1; /* fallback for old browsers */
         background: -webkit-linear-gradient(right, #76b852, #8DC26F);
         background: -moz-linear-gradient(right, #76b852, #8DC26F);
         background: -o-linear-gradient(right, #76b852, #8DC26F);
@@ -132,7 +132,7 @@
                 </span>
             @endif
             <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
+            <p class="message">Not registered? <a href="{{route('register')}}">Create an account</a></p>
         </form>
     </div>
 </div>

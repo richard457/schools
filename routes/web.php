@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Post;
 Route::get('/', function () {
-    return view('welcome');
+	$posts = Post::all();
+    return view('welcome')->with('posts',$posts);
 });
 Route::get('logout', 'HomeController@logout');
 Auth::routes();
@@ -23,5 +24,17 @@ Route::get('get_user', 'User@getUser')->name('home');
 Route::get('get_accounts', 'AccountController@getAccount')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
+=======
+Route::get('questions', 'HomeController@questions');
+Route::get('question', 'HomeController@getAnswers');
+
+Route::post('add_question', 'HomeController@addQuestion');
+Route::get('add_answer/{id}', 'HomeController@addAnswer');
+
+Route::get('save_answer/{id}/{a_id}', 'HomeController@saveAnswer');
+Route::get('save_answers', 'HomeController@saveAnswerApi');
+Route::get('get_marks', 'HomeController@getMarks');
+>>>>>>> cbfde08a0ec971d44f63ddda7a22d08c575d5b1b
 Route::post('upload', 'HomeController@upload');
 

@@ -29,6 +29,7 @@ class HomeController extends Controller
     public function index()
     {
 
+
         $posts = Post::all();
         return view('home')->with('posts',$posts);
     }
@@ -117,6 +118,7 @@ class HomeController extends Controller
     public function upload(Request $request){
 
         $path = $request->file('picture')->storePublicly('avatars');
+        $pretty_url = str_replace('localhost', 'localhost:8000', Storage::url($path));
          Post::create([
             'image_url'=>Storage::url($path)
          ]);
