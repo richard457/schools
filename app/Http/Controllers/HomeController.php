@@ -29,6 +29,7 @@ class HomeController extends Controller
     public function index()
     {
 
+
         $posts = Post::all();
         return view('home')->with('posts',$posts);
     }
@@ -119,7 +120,7 @@ class HomeController extends Controller
         $path = $request->file('picture')->storePublicly('avatars');
         $pretty_url = str_replace('localhost', 'localhost:8000', Storage::url($path));
          Post::create([
-            'image_url'=>$pretty_url
+            'image_url'=>Storage::url($path)
          ]);
          $posts = Post::all();
          return redirect()->to('home')->with('posts',$posts);

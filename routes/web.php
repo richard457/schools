@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Post;
 Route::get('/', function () {
-    return view('welcome');
+	$posts = Post::all();
+    return view('welcome')->with('posts',$posts);
 });
 Route::get('logout', 'HomeController@logout');
 Auth::routes();
