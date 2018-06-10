@@ -180,180 +180,9 @@
 </section>
 
 <!-- Services Section -->
-<section class="Material-service-section section-padding">
-    <div class="container">
-        <div class="row">
-            <!-- Section Titile -->
-            <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1 class="section-title">Why Choose</h1>
-            </div>
-        </div>
-        <!-- Services Widget Section -->
-        <div class="row">
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".3s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-arrange-send-backward"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Refreshing Design</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".4s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-code-tags-check"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Solid Bootstrap 4</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".5s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-grid"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">100+ Components</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".6s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-update"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Regular Updates</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".7s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-speedometer"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Speed Optimized</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service Widgets -->
-            <div class="col-md-6 col-lg-4 col-xl-4 single-service-widget wow animated fadeInUp" data-wow-delay=".8s">
-                <div class="media">
-                    <div class="media-left">
-                        <i class="material-icons pulse-shrink mdi mdi-shape-plus"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="subtitle"><a href="#">Fully Customizable</a></h2>
-                        <p>Excepteur sint occaecat cupi datat non proidt, sunt in culpa qui offi cia deserunt</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!-- Services Section End -->
 
-
-
-<!-- work-counter area -->
-<section class="work-counter-section section-padding">
-    <div class="container">
-        <div class="row">
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".2s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-check-all"></i></div>
-                    <div class="timer">347</div>
-                    <p>Projects Done</p>
-                </div>
-            </div>
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".3s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-clock"></i></div>
-                    <div class="timer">8896</div>
-                    <p>Working Hours</p>
-                </div>
-            </div>
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".4s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-account-multiple-outline"></i></div>
-                    <div class="timer">35</div>
-                    <p>Team Members</p>
-                </div>
-            </div>
-            <!-- Single Counter -->
-            <div class="col-md-3 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".5s">
-                <div class="counter">
-                    <div class="icon"><i class="material-icons mdi mdi-sticker-emoji"></i></div>
-                    <div class="timer">233</div>
-                    <p>Happy Clients</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Start Testimonial Section  -->
-<div class="testimonial section-padding">
-    <div class="container">
-        <div class="row">
-            <!-- Testimonial section  -->
-            <div class="testimonials-carousel owl-carousel">
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="datils">
-                            <h5>Adam Schwartz</h5>
-                            <span>Software Articulate, Google</span>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's <br> standard dummy text ever since the 1500s Lorem Ipsum.</p>
-                        </div>
-                        <div class="img">
-                            <a href="#"><img class="img-fluid" src="assets/images/testimonial/author1.jpg"  alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="datils">
-                            <h5>Clark Brown</h5>
-                            <span>Brand Managerr</span>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's <br> standard dummy text ever since the 1500s Lorem Ipsum.</p>
-                        </div>
-                        <div class="img">
-                            <a href="#"><img class="img-fluid"  src="assets/images/testimonial/author2.jpg"  alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="datils">
-                            <h5>Ana Blunt</h5>
-                            <span>Creative Director</span>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's <br> standard dummy text ever since the 1500s Lorem Ipsum.</p>
-                        </div>
-                        <div class="img">
-                            <a href="#"><img class="img-fluid"  src="assets/images/testimonial/author3.jpg"  alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- End Testimonial Section  -->
 
 <!-- Start Client Section -->
@@ -420,16 +249,16 @@
         <div class="row">
             <!-- Section Titile -->
             <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content.</p>
+                <p>Talk to us share with us your insight</p>
 
                 <div class="find-widget">
-                    <a href="#"><i class="material-icons mdi mdi-map-marker"></i>4435 Berkshire Circle Knoxville</a>
+                    <a href="#"><i class="material-icons mdi mdi-map-marker"></i>KG 25, Av</a>
                 </div>
                 <div class="find-widget">
-                    <a href="#"><i class="material-icons mdi mdi-phone"></i> + 879-890-9767</a>
+                    <a href="#"><i class="material-icons mdi mdi-phone"></i> +78900000000</a>
                 </div>
                 <div class="find-widget">
-                    <a href="#"><i class="material-icons mdi mdi-email-open mr-3"></i> support@Material.com</a>
+                    <a href="#"><i class="material-icons mdi mdi-email-open mr-3"></i> support@travel.com</a>
                 </div>
                 <div class="find-widget">
                     <a href="#"><i class="material-icons mdi mdi-clock"></i> Mon to Sat: 09:30 AM - 10.30 PM</a>
@@ -483,7 +312,7 @@
             <!--First column-->
             <div class="col-md-6 col-lg-3 col-xl-3 footer-contact-widget">
                 <h3 class="footer-title">About</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates eos minus expedita ipsum soluta voluptatem sed architecto.</p>
+                <p>We provide</p>
                 <ul>
                     <li>
                         <a href="#"><i class="mdi mdi-facebook"></i></a>
