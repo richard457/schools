@@ -36,7 +36,6 @@ class HomeController extends Controller
         return redirect('/');
     }
     public function saveDetails(Request $request){
-
         $post = Post::find($request->get('id'));
         $post->image_type = $request->get('image_type');
         $post->description = $request->get('description');
