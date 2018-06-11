@@ -46,7 +46,8 @@ class HomeController extends Controller
         return redirect()->to('home');
     }
     public function getImages(Request $request){
-        $posts = Post::whereimage_type($request->get('image_type'))->get();
+        $request->has('region')?$region = $request->get('region'): $region='gakenke';
+        $posts = Post::whereimage_type($request->get('image_type'))->whereregion($region)->get();
         return Response::json($posts);
     }
     public function removeImage($id){
