@@ -39,6 +39,7 @@ class HomeController extends Controller
         $post = Post::find($request->get('id'));
         $post->image_type = $request->get('image_type');
         $post->description = $request->get('description');
+        $post->region = $request->get('region');
         $post->lat = $request->get('latitude');
         $post->long = $request->get('longitude');
         $post->save();

@@ -10,6 +10,15 @@
                 </select>
             </div>
             <div>
+                <select name="region" style="width: 450px;margin-left: 10px;">
+                    <option>gakenke</option>
+                    <option>rulindo</option>
+                    <option>burera</option>
+                    <option>musanze</option>
+                    <option>gicumbi</option>
+                </select>
+            </div>>
+            <div>
                 <textarea name="description" type="text" style="min-width: 400px;margin-left: 40px;"></textarea>
             </div>
             <div style="margin-left: 45px">
