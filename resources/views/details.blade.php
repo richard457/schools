@@ -17,7 +17,7 @@
                     <option>musanze</option>
                     <option>gicumbi</option>
                 </select>
-            </div>>
+            </div>
             <div>
                 <textarea name="description" type="text" style="min-width: 400px;margin-left: 40px;"></textarea>
             </div>
